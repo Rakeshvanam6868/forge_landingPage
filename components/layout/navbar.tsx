@@ -1,0 +1,61 @@
+'use client';
+
+import { useState, useEffect } from 'react';
+import { Menu, X } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+
+export const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  return (
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-[#000000]/80 backdrop-blur-md border-b border-white/5 py-4' : 'bg-transparent py-6'}`}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#222] to-[#111] border border-white/10 flex items-center justify-center">
+              <div className="w-3 h-3 bg-[#FF3B3B] rounded-sm" />
+            </div>
+            <span className="font-bold text-xl tracking-tight text-white/90">TrainSmarter</span>
+          </div>
+          
+          <div className="hidden md:flex items-center gap-8">
+            <a href="#preview" className="text-sm font-medium text-[#888888] hover:text-white transition-colors">Product</a>
+            <a href="#how-it-works" className="text-sm font-medium text-[#888888] hover:text-white transition-colors">Method</a>
+            <a href="#features" className="text-sm font-medium text-[#888888] hover:text-white transition-colors">Features</a>
+          </div>
+
+          <div className="hidden md:flex items-center gap-4">
+            <a href="#" className="text-sm font-medium text-[#888888] hover:text-white transition-colors">Log In</a>
+            <Button variant="primary" className="px-5 py-2 text-sm">Join Waitlist</Button>
+          </div>
+
+          <div className="md:hidden">
+            <button onClick={() => setIsOpen(!isOpen)} className="text-white p-2" aria-label="Toggle menu">
+              {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {isOpen && (
+        <div className="md:hidden bg-[#0A0A0A]/95 backdrop-blur-3xl border-b border-white/10 absolute top-full left-0 right-0 h-screen p-4 flex flex-col gap-4">
+          <a href="#preview" onClick={() => setIsOpen(false)} className="text-lg font-medium text-[#888888] hover:text-white p-2">Product</a>
+          <a href="#how-it-works" onClick={() => setIsOpen(false)} className="text-lg font-medium text-[#888888] hover:text-white p-2">Method</a>
+          <a href="#features" onClick={() => setIsOpen(false)} className="text-lg font-medium text-[#888888] hover:text-white p-2">Features</a>
+          <div className="pt-4 mt-auto">
+            <Button variant="primary" className="w-full">Join Waitlist</Button>
+          </div>
+        </div>
+      )}
+    </nav>
+  );
+};
