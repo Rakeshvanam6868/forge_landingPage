@@ -38,6 +38,10 @@ export const metadata: Metadata = {
     title: 'TrainSmarter | Adaptive Workout App',
     description: 'Stop guessing your workouts. Our AI tells you exactly what to lift.',
   },
+  icons: {
+    icon: '/TrainSmarter.png',
+    apple: '/TrainSmarter.png',
+  },
 };
 
 export default function RootLayout({children}: {children: React.ReactNode}) {
