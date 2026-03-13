@@ -7,32 +7,37 @@ import { Button } from '@/components/ui/button';
 
 export const EarlyAccessSection = () => {
   const [email, setEmail] = useState('');
-  const [status, setStatus] = useState<'idle' | 'loading' | 'success'>('idle');
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email) return;
     
     setStatus('loading');
+    setErrorMessage('');
     
     try {
-      // Setup the API route in future implementation
       const res = await fetch('/api/waitlist', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ email, source: 'landing_page_footer' }),
       });
       
+      const data = await res.json();
+
       if (res.ok) {
         setStatus('success');
       } else {
-        // Fallback for UI if API route doesn't exist yet
-        setTimeout(() => setStatus('success'), 1000);
+        setErrorMessage(data.error || 'Something went wrong. Please try again.');
+        setStatus('error');
       }
-    } catch {
-      setTimeout(() => setStatus('success'), 1000);
+    } catch (err) {
+      console.error('Waitlist error:', err);
+      setErrorMessage('Failed to connect to the server. Please check your internet connection.');
+      setStatus('error');
     }
   };
 
@@ -88,6 +93,11 @@ export const EarlyAccessSection = () => {
                       {status === 'loading' ? 'Joining...' : 'Join Waitlist'}
                     </Button>
                   </div>
+                  {status === 'error' && (
+                    <p className="text-center text-xs text-[#FF3B3B] mt-2 font-medium bg-[#FF3B3B]/10 py-2 rounded-lg border border-[#FF3B3B]/20">
+                      {errorMessage}
+                    </p>
+                  )}
                   <p className="text-center text-xs text-[#888] mt-2">No spam. Unsubscribe anytime.</p>
                 </form>
               )}

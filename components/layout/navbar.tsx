@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -33,6 +34,7 @@ export const Navbar = () => {
             <a href="#preview" className="text-sm font-medium text-[#888888] hover:text-white transition-colors">Product</a>
             <a href="#how-it-works" className="text-sm font-medium text-[#888888] hover:text-white transition-colors">Method</a>
             <a href="#features" className="text-sm font-medium text-[#888888] hover:text-white transition-colors">Features</a>
+            <Link href="/blog" className="text-sm font-medium text-[#888888] hover:text-white transition-colors">Blog</Link>
           </div>
 
           <div className="hidden md:flex items-center gap-4">
@@ -53,6 +55,7 @@ export const Navbar = () => {
           <a href="#preview" onClick={() => setIsOpen(false)} className="text-lg font-medium text-[#888888] hover:text-white p-2">Product</a>
           <a href="#how-it-works" onClick={() => setIsOpen(false)} className="text-lg font-medium text-[#888888] hover:text-white p-2">Method</a>
           <a href="#features" onClick={() => setIsOpen(false)} className="text-lg font-medium text-[#888888] hover:text-white p-2">Features</a>
+          <Link href="/blog" onClick={() => setIsOpen(false)} className="text-lg font-medium text-[#888888] hover:text-white p-2">Blog</Link>
           <div className="pt-4 mt-auto">
             <Button variant="primary" className="w-full">Join Waitlist</Button>
           </div>

@@ -2,6 +2,8 @@ import { ArrowRight, Play } from 'lucide-react';
 import { FadeIn } from '@/components/ui/fade-in';
 import { Button } from '@/components/ui/button';
 import { ProductCarousel } from '@/components/ui/product-carousel';
+import { WaitlistForm } from '@/components/ui/waitlist-form';
+import { WaitlistCounter } from '@/components/ui/waitlist-counter';
 
 export const Hero = () => (
   <section className="relative pt-24 pb-20 lg:pt-32 lg:pb-32 overflow-hidden flex flex-col items-center">
@@ -37,18 +39,9 @@ export const Hero = () => (
             </p>
           </FadeIn>
           
-          <FadeIn delay={0.4}>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Button variant="primary" className="w-full sm:w-auto min-h-[48px] px-8 rounded-xl text-base group">
-                Join Early Access
-                <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </Button>
-              <Button variant="secondary" className="w-full sm:w-auto min-h-[48px] px-8 rounded-xl text-base group">
-                <Play className="mr-2 w-4 h-4" />
-                See How It Works
-              </Button>
-            </div>
-            <p className="mt-6 text-[11px] text-[#888888] font-medium tracking-wide uppercase">Designed for high-performance lifters.</p>
+          <FadeIn delay={0.4} className="w-full flex flex-col items-center">
+            <WaitlistForm source="hero_top" />
+            <WaitlistCounter />
           </FadeIn>
         </div>
 
