@@ -5,12 +5,12 @@ import { Card } from '@/components/ui/card';
 
 export const ProductPreviewSection = () => (
   <section className="py-24 bg-[#050505] relative border-t border-white/5" id="preview">
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <FadeIn>
-        <SectionHeading title="See TrainSmarter in Action" />
+        <SectionHeading title="Built for Performance" />
       </FadeIn>
       
-      <div className="grid md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         <FadeIn delay={0.1}>
           <Card className="h-full flex flex-col group">
             <div className="w-12 h-12 bg-[#111111] border border-white/10 rounded-xl flex items-center justify-center mb-6 shadow-inner relative overflow-hidden">

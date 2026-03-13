@@ -4,7 +4,7 @@ import { SectionHeading } from '@/components/ui/section-heading';
 
 export const ProgressSection = () => (
   <section className="py-32 bg-[#050505] border-t border-white/5 overflow-hidden">
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="grid lg:grid-cols-2 gap-16 items-center">
         <FadeIn>
           <SectionHeading 

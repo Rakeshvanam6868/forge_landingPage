@@ -6,7 +6,7 @@ export const SolutionSection = () => (
   <section className="py-32 bg-[#050505] relative border-t border-white/5 overflow-hidden">
     <div className="absolute left-[-10%] top-1/2 -translate-y-1/2 w-1/3 h-1/2 bg-[#FF3B3B]/10 blur-[150px] pointer-events-none rounded-full" />
     
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="grid lg:grid-cols-2 gap-16 items-center">
         <FadeIn>
           <div className="inline-block px-3 py-1 rounded-full bg-[#FF3B3B]/10 border border-[#FF3B3B]/20 text-[#FF3B3B] text-xs font-bold uppercase tracking-wider mb-6">

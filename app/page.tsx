@@ -16,7 +16,7 @@ import { Button } from '@/components/ui/button';
 
 export default function LandingPage() {
   return (
-    <div className="min-h-screen font-sans bg-[#000000] text-white selection:bg-[#FF3B3B]/30">
+    <div className="min-h-screen font-sans bg-[#000000] text-white selection:bg-[#FF3B3B]/30 overflow-x-hidden">
       <Navbar />
       <main>
         <Hero />
@@ -33,12 +33,6 @@ export default function LandingPage() {
         <FinalCTA />
       </main>
       <Footer />
-      {/* Target UX Improvement: Sticky waitlist button on mobile */}
-      <div className="fixed bottom-6 right-6 md:hidden z-50 animate-fade-in-up" style={{ animationDelay: '1s' }}>
-        <Button variant="primary" className="w-full shadow-2xl shadow-black/80 backdrop-blur-md">
-          Join Waitlist
-        </Button>
-      </div>
     </div>
   );
 }

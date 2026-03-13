@@ -40,7 +40,7 @@ export const EarlyAccessSection = () => {
     <section className="py-32 bg-[#000000] border-t border-white/5 relative">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-[#FF3B3B]/5 blur-[120px] pointer-events-none rounded-b-full" />
       
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <FadeIn>
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-extrabold mb-6 tracking-tight">Join the TrainSmarter Beta</h2>
