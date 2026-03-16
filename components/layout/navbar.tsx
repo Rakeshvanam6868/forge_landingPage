@@ -44,7 +44,7 @@ export const Navbar = () => {
               variant="primary" 
               className="px-5 py-2 text-sm"
             >
-              Join Waitlist
+              Join Waitlist (Free)
             </Button>
           </div>
 
@@ -71,7 +71,7 @@ export const Navbar = () => {
               variant="primary" 
               className="w-full"
             >
-              Join Waitlist
+              Join Waitlist (Free)
             </Button>
           </div>
         </div>

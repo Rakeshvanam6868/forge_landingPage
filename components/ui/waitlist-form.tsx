@@ -45,6 +45,109 @@ export const WaitlistForm = ({ source = 'hero' }: { source?: string }) => {
     }
   };
 
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
+
+  const loadRazorpay = () => {
+    return new Promise((resolve) => {
+      const script = document.createElement('script');
+      script.src = 'https://checkout.razorpay.com/v1/checkout.js';
+      script.onload = () => resolve(true);
+      script.onerror = () => resolve(false);
+      document.body.appendChild(script);
+    });
+  };
+
+  const handleUpgrade = async () => {
+    try {
+      const res = await loadRazorpay();
+      if (!res) {
+        alert('Razorpay SDK failed to load. Are you online?');
+        return;
+      }
+
+      // Create Order
+      const orderRes = await fetch('/api/create-order', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ amount: 199, email, name }), 
+      });
+      const { orderId, error } = await orderRes.json();
+
+      if (error) throw new Error(error);
+
+      const options = {
+        key: process.env.NEXT_PUBLIC_RAZORPAY_KEY, // Public Key
+        amount: 19900,
+        currency: 'INR',
+        name: 'Trainzy',
+        description: 'Founding Member Lifetime Access',
+        order_id: orderId,
+        handler: async function (response: any) {
+          try {
+            const verifyRes = await fetch('/api/payment-success', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                razorpay_order_id: response.razorpay_order_id,
+                razorpay_payment_id: response.razorpay_payment_id,
+                razorpay_signature: response.razorpay_signature,
+                email,
+                name
+              }),
+            });
+            const data = await verifyRes.json();
+            if (data.success) {
+              setShowSuccessModal(true);
+            } else {
+              alert('Payment verification failed. Please contact support.');
+            }
+          } catch (err) {
+            console.error('Verification error:', err);
+            alert('Something went wrong during verification.');
+          }
+        },
+        prefill: {
+          name: name,
+          email: email,
+        },
+        theme: {
+          color: '#FF3B3B',
+        },
+      };
+
+      const rzp = (window as any).Razorpay(options);
+      rzp.open();
+    } catch (err: any) {
+      console.error('Upgrade error:', err);
+      alert(err.message || 'Failed to initiate upgrade');
+    }
+  };
+
+  if (showSuccessModal) {
+    return (
+      <div className="w-full flex justify-center animate-in fade-in zoom-in duration-500">
+        <div className="bg-[#111] border border-white/5 rounded-2xl p-6 sm:p-8 text-center max-w-md w-full shadow-2xl relative overflow-hidden">
+          <div className="relative z-10">
+            <div className="w-16 h-16 bg-[#22C55E]/10 border border-[#22C55E]/20 rounded-full flex items-center justify-center mx-auto mb-6">
+              <span className="text-3xl">🎉</span>
+            </div>
+            <h3 className="text-2xl font-bold text-white mb-4">You're a Founding Member</h3>
+            <p className="text-[#888] mb-8 leading-relaxed">
+              You now have lifetime Trainzy access and will skip the waitlist. We'll reach out soon with next steps.
+            </p>
+            <Button 
+              onClick={() => window.location.href = '/'}
+              variant="primary" 
+              className="w-full rounded-full py-6 font-bold text-base shadow-[0_4px_20px_rgba(255,59,59,0.3)]"
+            >
+              Continue
+            </Button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   if (status === 'success') {
     return (
       <div className="w-full flex justify-center animate-in fade-in zoom-in duration-500">
@@ -67,28 +170,14 @@ export const WaitlistForm = ({ source = 'hero' }: { source?: string }) => {
             {/* Upgrade Card Section */}
             <p className="text-xs font-semibold text-[#FF3B3B] uppercase tracking-wider mb-2">Get Instant Access</p>
             <h4 className="text-xl font-bold text-white mb-2">Become a Founding Member</h4>
-            <p className="text-sm text-[#888] mb-8 leading-relaxed">
-              Skip the waitlist and unlock lifetime premium access for a one-time payment of $5.
-            </p>
+              Skip the waitlist and unlock lifetime premium access for a one-time payment of ₹199.
             
             <Button 
-              onClick={async () => {
-                try {
-                  const res = await fetch('/api/checkout', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ email, name }),
-                  });
-                  const { url } = await res.json();
-                  if (url) window.location.href = url;
-                } catch (err) {
-                  console.error('Checkout error:', err);
-                }
-              }}
+              onClick={handleUpgrade}
               variant="primary" 
               className="w-full rounded-full py-6 bg-[#FF3B3B] hover:bg-[#E63535] shadow-[0_0_20px_rgba(255,59,59,0.3)] font-bold text-base"
             >
-              Become Founding Member — $5 Lifetime
+              Become Founding Member — ₹199 Lifetime
             </Button>
             <p className="text-[10px] text-[#555] mt-4">Limited founding spots available.</p>
           </div>

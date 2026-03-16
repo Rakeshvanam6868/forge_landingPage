@@ -14,9 +14,9 @@ export const FinalCTA = () => (
         <Button 
           onClick={() => document.getElementById('waitlist-form')?.scrollIntoView({ behavior: 'smooth' })}
           variant="primary" 
-          className="px-10 py-5 text-lg shadow-[0_0_30px_rgba(255,59,59,0.3)]"
+          className="px-10 py-5 text-lg shadow-[0_0_30px_rgba(255,59,59,0.3)] font-bold rounded-full"
         >
-          Get Early Access
+          Join the Waitlist (Free)
         </Button>
       </FadeIn>
     </div>

@@ -47,16 +47,16 @@ export const Hero = () => (
               <Button 
                 onClick={() => document.getElementById('waitlist-form')?.scrollIntoView({ behavior: 'smooth' })}
                 variant="primary" 
-                className="rounded-full py-4 px-8 text-lg"
+                className="rounded-full py-4 px-8 text-lg font-bold shadow-[0_0_30px_rgba(255,59,59,0.3)] hover:scale-105 transition-transform"
               >
-                Join Early Access
+                Join the Waitlist (Free)
               </Button>
               <Button 
                 onClick={() => document.getElementById('waitlist-form')?.scrollIntoView({ behavior: 'smooth' })}
                 variant="outline" 
-                className="rounded-full py-4 px-8 text-lg border-[#FF3B3B]/30 hover:bg-[#FF3B3B]/5 text-white"
+                className="rounded-full py-4 px-8 text-lg border-white/10 hover:bg-white/5 font-semibold text-white"
               >
-                Become Founding Member — $5 Lifetime
+                Become Founding Member — ₹199 Lifetime
               </Button>
             </div>
             
