@@ -6,24 +6,24 @@ export const TargetAudienceSection = () => (
   <section className="py-32 bg-[#000000] border-t border-white/5">
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <FadeIn>
-        <SectionHeading title="Who This Is For" />
+        <SectionHeading title="Who Trainzy Is Built For" />
       </FadeIn>
       <div className="grid md:grid-cols-3 gap-6">
         {[
           {
             icon: <Dumbbell className="w-6 h-6 text-[#FF3B3B]" />,
-            title: "Beginner Lifters",
-            desc: "who don't know what workout to follow"
+            title: "Beginner lifters",
+            desc: "Start with structured workouts that grow with your ability."
           },
           {
             icon: <TrendingUp className="w-6 h-6 text-[#FF3B3B]" />,
-            title: "Intermediate Gym Users",
-            desc: "who are stuck in plateaus"
+            title: "Intermediate lifters",
+            desc: "Break through plateaus with adaptive training adjustments."
           },
           {
             icon: <Smartphone className="w-6 h-6 text-[#FF3B3B]" />,
-            title: "Notes App Users",
-            desc: "people currently using notes apps to track workouts"
+            title: "Home gym athletes",
+            desc: "Train effectively even with limited equipment."
           }
         ].map((item, i) => (
           <FadeIn key={i} delay={i * 0.1} className="h-full">

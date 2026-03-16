@@ -12,14 +12,12 @@ export const SolutionSection = () => (
           <div className="inline-block px-3 py-1 rounded-full bg-[#FF3B3B]/10 border border-[#FF3B3B]/20 text-[#FF3B3B] text-xs font-bold uppercase tracking-wider mb-6">
             The Solution
           </div>
-          <h2 className="text-4xl md:text-5xl font-extrabold mb-6 tracking-tight leading-[1.1]">
-            Turn Every Workout Into Real Progress
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-8 tracking-tighter leading-[1.1]">
+            Turn Every Workout Into<br />
+            <span className="text-[#888888]">Measurable Progress</span>
           </h2>
-          <p className="text-[#888888] text-lg mb-8 leading-relaxed">
-            TrainSmarter analyzes your training history and performance to automatically adjust your workouts.
-          </p>
-          <p className="text-[#888888] text-lg mb-10 leading-relaxed">
-            It tells you exactly what weight to lift, how many reps to perform, and when to progress.
+          <p className="text-lg md:text-xl text-[#888888] mb-12 max-w-2xl mx-auto leading-relaxed">
+            Trainzy analyzes your completed workouts and automatically adapts your next session — increasing weight, reps, or volume when you're ready.
           </p>
           
           <div className="space-y-4 mb-10">
@@ -35,7 +33,7 @@ export const SolutionSection = () => (
               </div>
             ))}
           </div>
-          <Button>See Features</Button>
+          <Button variant="primary">Start Training Smarter</Button>
         </FadeIn>
 
         <FadeIn delay={0.2} className="relative z-10">

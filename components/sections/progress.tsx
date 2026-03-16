@@ -8,9 +8,8 @@ export const ProgressSection = () => (
       <div className="grid lg:grid-cols-2 gap-16 items-center">
         <FadeIn>
           <SectionHeading 
-            title="Progress You Can See" 
-            align="left"
-            subtitle="TrainSmarter increases load only when your performance improves, ensuring clear and consistent strength gains."
+            title="Track Progress That Actually Matters" 
+            subtitle="See how your strength evolves over time instead of just logging workouts."
           />
         </FadeIn>
 

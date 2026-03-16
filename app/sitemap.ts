@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://trainsmarter.app';
+  const baseUrl = 'https://trainzy.app';
 
   // In the future, you would dynamically fetch blog post URLs here and append them
   

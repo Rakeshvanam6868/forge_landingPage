@@ -20,20 +20,16 @@ export const WaitlistCounter = () => {
     fetchCount();
   }, []);
 
-  if (count === null) return <div className="h-6"></div>; // Placeholder to avoid layout shift
+  if (count === null) return <div className="h-6"></div>;
+
+  const displayCount = count < 10 
+    ? "early athletes" 
+    : `${count.toLocaleString()}+ athletes`;
 
   return (
-    <div className="flex items-center gap-3 mt-4 animate-in fade-in duration-700">
-      <div className="flex -space-x-2">
-        {/* Placeholder avatars to build trust visually */}
-        {[1, 2, 3].map((i) => (
-          <div key={i} className={`w-6 h-6 rounded-full border border-black bg-[#222] flex items-center justify-center overflow-hidden z-[${4-i}]`}>
-            <div className="w-full h-full bg-gradient-to-tr from-[#333] to-[#555] opacity-50" />
-          </div>
-        ))}
-      </div>
-      <p className="text-[13px] text-[#888] font-medium">
-        Join <span className="text-white font-bold">{count.toLocaleString()}</span> lifters already testing TrainSmarter.
+    <div className="flex items-center gap-2 mt-4 animate-in fade-in duration-700">
+      <p className="text-sm sm:text-base text-[#888] font-medium">
+        Join <span className="text-white font-bold">{displayCount}</span> testing Trainzy.
       </p>
     </div>
   );

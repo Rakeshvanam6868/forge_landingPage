@@ -17,10 +17,10 @@ export async function generateMetadata({ params }: PostPageProps) {
   const post = await getPostBySlug(resolvedParams.slug);
   if (!post) return {};
 
-  const url = `https://trainsmarter.app/blog/${resolvedParams.slug}`;
+  const url = `https://trainzy.app/blog/${resolvedParams.slug}`;
 
   return {
-    title: `${post.title} | TrainSmarter Blog`,
+    title: `${post.title} | Trainzy Blog`,
     description: post.description,
     alternates: {
       canonical: url,
@@ -32,7 +32,7 @@ export async function generateMetadata({ params }: PostPageProps) {
       type: 'article',
       publishedTime: post.date,
       authors: [post.author],
-      siteName: 'TrainSmarter',
+      siteName: 'Trainzy',
     },
     twitter: {
       card: 'summary_large_image',
@@ -107,12 +107,11 @@ export default async function BlogPostPage({ params }: PostPageProps) {
           </div>
 
           <div className="mt-16 bg-[#111] border border-white/5 rounded-2xl p-8 sm:p-12 text-center">
-            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">Want to experience adaptive training?</h2>
-            <p className="text-[#888] mb-8 max-w-xl mx-auto">
-              TrainSmarter adjusts your workouts based on your performance in real-time. Join the waitlist for early access.
-            </p>
+            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-8">Want workouts that adapt automatically?</h2>
             <div className="max-w-md mx-auto">
-              <WaitlistForm source="blog_post_footer" />
+              <Link href="/?source=blog_footer" className="inline-flex items-center justify-center rounded-full bg-[#FF3B3B] px-8 py-4 text-sm font-bold text-white shadow-[0_0_20px_rgba(255,59,59,0.3)] hover:bg-[#E63535] transition-all">
+                Join Early Access
+              </Link>
             </div>
           </div>
 

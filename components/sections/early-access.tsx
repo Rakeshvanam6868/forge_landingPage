@@ -48,7 +48,7 @@ export const EarlyAccessSection = () => {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <FadeIn>
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-extrabold mb-6 tracking-tight">Join the TrainSmarter Beta</h2>
+            <h2 className="text-4xl md:text-5xl font-extrabold mb-6 tracking-tight">Join the Trainzy Beta</h2>
             <p className="text-[#888888] text-lg max-w-2xl mx-auto">
               Early testers get full access to premium features while the product is in beta.
             </p>

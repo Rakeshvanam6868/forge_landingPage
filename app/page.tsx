@@ -13,11 +13,11 @@ import { TestimonialsSection } from '@/components/sections/testimonials';
 import { FounderSection } from '@/components/sections/founder';
 import { EarlyAccessSection } from '@/components/sections/early-access';
 import { FinalCTA } from '@/components/sections/final-cta';
-import { Button } from '@/components/ui/button';
+import { FoundingMemberSuccess } from '@/components/ui/founding-member-success';
 
 import { BlogPreviewSection } from '@/components/sections/blog-preview';
 import { DemoVideoSection } from '@/components/sections/demo-video';
-import { SocialProofBubble } from '@/components/ui/social-proof-bubble';
+import { WaitlistForm } from '@/components/ui/waitlist-form';
 
 export default function LandingPage() {
   return (
@@ -25,15 +25,21 @@ export default function LandingPage() {
       {/* Plausible Analytics Integration */}
       <Script 
         defer 
-        data-domain="trainsmarter.app" 
+        data-domain="trainzy.app" 
         src="https://plausible.io/js/script.js" 
       />
-      <SocialProofBubble />
       
       <Navbar />
       <main>
+        <FoundingMemberSuccess />
         <Hero />
-        <DemoVideoSection />
+        
+        {/* Single Waitlist Form Centerpiece */}
+        <section className="bg-black py-12 flex justify-center">
+          <WaitlistForm source="landing_page_center" />
+        </section>
+
+        {/* <DemoVideoSection /> */}
         <ProductPreviewSection />
         <ProblemSection />
         <SolutionSection />
@@ -44,7 +50,6 @@ export default function LandingPage() {
         <BlogPreviewSection />
         <TestimonialsSection />
         <FounderSection />
-        <EarlyAccessSection />
         <FinalCTA />
       </main>
       <Footer />

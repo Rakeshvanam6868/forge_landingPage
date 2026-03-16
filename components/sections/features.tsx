@@ -7,30 +7,30 @@ export const FeaturesSection = () => (
   <section className="py-32 bg-[#050505] border-t border-white/5" id="features">
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <FadeIn>
-        <SectionHeading title="Everything You Need To Get Stronger" />
+        <SectionHeading title="Everything You Need to Train Smarter" />
       </FadeIn>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
         {[
           {
             icon: <Zap className="w-5 h-5 text-white" />,
-            title: "Adaptive Workouts",
+            title: "Adaptive workout engine",
             description: "Your training plan evolves automatically based on your performance."
           },
           {
             icon: <Activity className="w-5 h-5 text-white" />,
-            title: "Live Workout Mode",
-            description: "Track sets, weights, and rest timers seamlessly without friction."
+            title: "Smart progression tracking",
+            description: "Swap exercises on the fly while maintaining the same training stimulus."
           },
           {
             icon: <TrendingUp className="w-5 h-5 text-white" />,
-            title: "Strength Tracking",
-            description: "See clear trends in your performance with embedded analytics."
+            title: "Home and gym equipment support",
+            description: "Workouts are tailored to the gear you have available."
           },
           {
             icon: <Smartphone className="w-5 h-5 text-white" />,
-            title: "Smart Insights",
-            description: "Get actionable feedback after every single workout."
+            title: "Exercise replacement system",
+            description: "Every set and rep is analyzed to drive your next session."
           }
         ].map((feature, index) => (
           <FadeIn key={index} delay={index * 0.1}>

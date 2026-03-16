@@ -6,9 +6,9 @@ export const DemoVideoSection = () => {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <FadeIn>
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">See TrainSmarter in action</h2>
+            <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">See How Trainzy Adapts Your Workouts</h2>
             <p className="text-[#888] text-lg max-w-2xl mx-auto">
-              A 60-second walkthrough of our adaptive training logic and workout tracking.
+              From onboarding to adaptive training — see how your program evolves as you train.
             </p>
           </div>
         </FadeIn>
@@ -31,7 +31,7 @@ export const DemoVideoSection = () => {
                 <iframe 
                   className="w-full h-full"
                   src="YOUR_VIDEO_URL"
-                  title="TrainSmarter App Demo"
+                  title="Trainzy App Demo"
                   frameBorder="0" 
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                   allowFullScreen

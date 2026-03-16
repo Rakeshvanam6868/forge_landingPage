@@ -9,7 +9,7 @@ export const FounderSection = () => (
           <div className="absolute top-0 right-1/2 translate-x-1/2 w-64 h-64 bg-white/5 blur-3xl rounded-full pointer-events-none" />
           <h2 className="text-3xl font-bold mb-8 relative z-10">Built by a Solo Developer</h2>
           <div className="space-y-6 text-[#888888] text-lg max-w-2xl mx-auto relative z-10 font-medium">
-            <p className="text-white/90">I built TrainSmarter because I was tired of guessing what to do in the gym.</p>
+            <p className="text-white/90">I built Trainzy because I was tired of guessing what to do in the gym.</p>
             <p>Most apps just track workouts. They don't help you improve.</p>
             <p>I wanted a system that actually guides your progress.</p>
             <p className="text-white/90 italic pt-4">So I built one.</p>

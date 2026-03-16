@@ -6,7 +6,7 @@ import { ArrowRight, Calendar, User, Clock } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 export const metadata = {
-  title: 'Blog | TrainSmarter - Adaptive Strength Training Insights',
+  title: 'Blog | Trainzy - Adaptive Strength Training Insights',
   description: 'Learn about progressive overload, adaptive training, and how to optimize your gym sessions.',
 };
 
@@ -18,7 +18,7 @@ export default async function BlogPage() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <FadeIn>
           <div className="text-center mb-16">
-            <SectionHeading title="Latest from TrainSmarter" />
+            <SectionHeading title="Latest from Trainzy" />
             <p className="text-[#888] text-lg max-w-2xl mx-auto mt-4">
               Insights on strength training, science-based progression, and how to build a better program.
             </p>

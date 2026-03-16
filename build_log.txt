@@ -1,0 +1,26 @@
+
+> fitness@0.1.0 build
+> next build
+
+   ▲ Next.js 15.5.12
+   - Environments: .env
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully in 6.0s
+   Skipping linting
+   Checking validity of types ...
+   Collecting page data ...
+   Generating static pages (0/10) ...
+   Generating static pages (2/10) 
+   Generating static pages (4/10) 
+   Generating static pages (7/10) 
+Error occurred prerendering page "/". Read more: https://nextjs.org/docs/messages/prerender-error
+Error: Event handlers cannot be passed to Client Component props.
+  {onClick: function onClick, variant: ..., className: ..., children: ...}
+            ^^^^^^^^^^^^^^^^
+If you need interactivity, consider converting part of this to a Client Component.
+    at stringify (<anonymous>) {
+  digest: '2249857269'
+}
+Export encountered an error on /page: /, exiting the build.
+ ⨯ Next.js build worker exited with code: 1 and signal: null

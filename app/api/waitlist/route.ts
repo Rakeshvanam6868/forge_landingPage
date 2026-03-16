@@ -1,78 +1,125 @@
 import { NextResponse } from 'next/server';
-import { supabase } from '@/lib/supabase';
+import { createClient } from '@supabase/supabase-js';
 import { Resend } from 'resend';
+
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+);
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
+// Basic IP-based rate limiting stores (in-memory for simple landing page)
+const rateLimit = new Map<string, { count: number, lastReset: number }>();
+
+function isRateLimited(ip: string) {
+  const now = Date.now();
+  const limit = 5;
+  const timeframe = 60 * 1000; // 1 minute
+
+  const record = rateLimit.get(ip);
+  if (!record || now - record.lastReset > timeframe) {
+    rateLimit.set(ip, { count: 1, lastReset: now });
+    return false;
+  }
+
+  if (record.count >= limit) return true;
+  record.count++;
+  return false;
+}
+
+const BLOCKED_DOMAINS = [
+  'mailinator.com', '10minutemail.com', 'tempmail.com', 
+  'guerrillamail.com', 'trashmail.com', 'yopmail.com'
+];
+
+function normalizeEmail(email: string) {
+  let [user, domain] = email.toLowerCase().trim().split('@');
+  if (domain === 'gmail.com') {
+    user = user.replace(/\./g, '').split('+')[0];
+  } else {
+    user = user.split('+')[0];
+  }
+  return `${user}@${domain}`;
+}
+
 export async function POST(req: Request) {
   try {
-    const { email, source } = await req.json();
-
-    if (!email || !email.includes('@')) {
-      return NextResponse.json({ error: 'Invalid email address' }, { status: 400 });
+    const ip = req.headers.get('x-forwarded-for') || 'anonymous';
+    if (isRateLimited(ip)) {
+      return NextResponse.json({ error: 'Too many requests. Please try again later.' }, { status: 429 });
     }
 
-    if (!supabase) {
-      console.warn('Supabase is not configured. Mocking waitlist insertion.');
-      // Simulate success with a realistic waitlist position
-      return NextResponse.json({ success: true, position: Math.floor(Math.random() * 50) + 150 });
+    const { email: rawEmail, name, source = 'landing' } = await req.json();
+
+    if (!rawEmail || !name) {
+      return NextResponse.json({ error: 'Name and email are required' }, { status: 400 });
     }
 
-    // 1. Check for duplicate entry in Supabase
-    const { data: existingEntry, error: checkError } = await supabase
+    const normalizedEmail = normalizeEmail(rawEmail);
+    const domain = normalizedEmail.split('@')[1];
+
+    if (BLOCKED_DOMAINS.includes(domain)) {
+      return NextResponse.json({ error: 'Please use a valid email address.' }, { status: 400 });
+    }
+
+    // Check if user already exists
+    const { data: existingUser } = await supabase
       .from('waitlist')
-      .select('id')
-      .eq('email', email)
+      .select('id, created_at, status')
+      .eq('email', normalizedEmail)
       .single();
 
-    if (existingEntry) {
-      return NextResponse.json({ error: 'Email already on waitlist' }, { status: 409 });
+    if (existingUser) {
+      // Get position for existing user
+      const { count } = await supabase
+        .from('waitlist')
+        .select('*', { count: 'exact', head: true })
+        .lte('created_at', existingUser.created_at);
+      
+      return NextResponse.json({ 
+        success: true, 
+        position: count || 0,
+        isReturning: true,
+        status: existingUser.status,
+        message: "You're already on the waitlist."
+      });
     }
 
-    // 2. Store in database
-    const { error: dbError } = await supabase
+    // Insert new user
+    const { data, error } = await supabase
       .from('waitlist')
-      .insert([{ email, source: source || 'landing_page', status: 'pending' }]);
+      .insert([{ email: normalizedEmail, name, source, status: 'waitlist' }])
+      .select('created_at')
+      .single();
 
-    if (dbError) {
-      console.error('Supabase error:', dbError);
-      return NextResponse.json({ error: 'Failed to save to database' }, { status: 500 });
-    }
+    if (error) throw error;
 
-    // 3. Send confirmation email via Resend
+    // Send confirmation email
     if (process.env.RESEND_API_KEY) {
       try {
         await resend.emails.send({
-          from: 'TrainSmarter <welcome@trainsmarter.app>',
-          to: email,
-          subject: "You're on the TrainSmarter waitlist",
-          html: `
-            <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto;">
-              <h1 style="color: #FF3B3B;">Welcome to TrainSmarter</h1>
-              <p>Thanks for joining the TrainSmarter waitlist.</p>
-              <p>We're building an adaptive workout system that adjusts your next session automatically based on your performance.</p>
-              <p>You'll be among the first invited to try it when we launch our beta.</p>
-              <br />
-              <p>Stay strong,<br />The TrainSmarter Team</p>
-            </div>
-          `,
+          from: 'Trainzy <welcome@trainzy.app>',
+          to: normalizedEmail,
+          subject: "You're on the waitlist 🎉",
+          html: `<p>Hi ${name},</p><p>You're now on the early access list. We'll notify you as soon as the beta launches.</p><p>Best,<br/>The Trainzy Team</p>`
         });
-      } catch (emailError) {
-        console.error('Resend error:', emailError);
-        // We don't return an error here as the db part succeeded
+      } catch (err) {
+        console.error('Email sending failed:', err);
       }
     }
 
-    // 4. Get waitlist position (total count)
-    const { count, error: countError } = await supabase
+    // Get position
+    const { count: position } = await supabase
       .from('waitlist')
       .select('*', { count: 'exact', head: true });
-      
-    const position = count ? count : 1; // Fallback to 1 if count fails
 
-    return NextResponse.json({ success: true, position });
-  } catch (error) {
-    console.error('Waitlist API error:', error);
-    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
+    return NextResponse.json({ 
+      success: true, 
+      position: position || 1 
+    });
+  } catch (error: any) {
+    console.error('Waitlist API Error:', error);
+    return NextResponse.json({ error: error.message }, { status: 500 });
   }
 }

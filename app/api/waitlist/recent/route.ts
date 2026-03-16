@@ -24,25 +24,19 @@ const generateMockSignups = () => {
 };
 
 export async function GET() {
+  if (!supabase) return NextResponse.json([], { status: 500 });
+  
   try {
-    if (!supabase) {
-      return NextResponse.json({ recent: generateMockSignups().slice(0, 5) }, { status: 200 });
-    }
-
     const { data, error } = await supabase
       .from('waitlist')
-      .select('created_at')
+      .select('name, created_at')
       .order('created_at', { ascending: false })
       .limit(5);
 
-    if (error) {
-      console.error('Error fetching recent signups:', error);
-      return NextResponse.json({ recent: generateMockSignups().slice(0, 5) }, { status: 200 });
-    }
+    if (error) throw error;
 
-    return NextResponse.json({ recent: data && data.length > 0 ? data : generateMockSignups().slice(0, 5) }, { status: 200 });
-  } catch (err) {
-    console.error('GET /api/waitlist/recent error:', err);
-    return NextResponse.json({ recent: generateMockSignups().slice(0, 5) }, { status: 200 });
+    return NextResponse.json(data || []);
+  } catch (error) {
+    return NextResponse.json([], { status: 500 });
   }
 }

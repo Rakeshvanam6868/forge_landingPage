@@ -91,7 +91,7 @@ export const SocialProofBubble = () => {
             </div>
             <div>
               <p className="text-sm font-medium text-white mb-1">
-                {currentItem.name ? `${currentItem.name} joined the waitlist` : 'Someone joined the waitlist'}
+                An athlete just joined the early access group
               </p>
               <p className="text-xs text-[#888]">
                 {timeAgoStr(currentItem.created_at)}

@@ -1,3 +1,5 @@
+'use client';
+
 import { FadeIn } from '@/components/ui/fade-in';
 import { Button } from '@/components/ui/button';
 
@@ -9,7 +11,11 @@ export const FinalCTA = () => (
           Start Training Smarter.<br />
           <span className="text-[#888888]">Join the Early Access List.</span>
         </h2>
-        <Button variant="primary" className="px-10 py-5 text-lg shadow-[0_0_30px_rgba(255,59,59,0.3)]">
+        <Button 
+          onClick={() => document.getElementById('waitlist-form')?.scrollIntoView({ behavior: 'smooth' })}
+          variant="primary" 
+          className="px-10 py-5 text-lg shadow-[0_0_30px_rgba(255,59,59,0.3)]"
+        >
           Get Early Access
         </Button>
       </FadeIn>

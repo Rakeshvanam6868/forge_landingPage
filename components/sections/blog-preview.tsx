@@ -15,7 +15,7 @@ export const BlogPreviewSection = async () => {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
           <FadeIn className="text-left">
-            <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">Latest from TrainSmarter</h2>
+            <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">Latest from Trainzy</h2>
             <p className="text-[#888] text-lg max-w-xl">
               Learn how to optimize your training with our science-backed guides and updates.
             </p>

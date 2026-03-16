@@ -1,4 +1,7 @@
+'use client';
+
 import { ArrowRight, Play } from 'lucide-react';
+import Link from 'next/link';
 import { FadeIn } from '@/components/ui/fade-in';
 import { Button } from '@/components/ui/button';
 import { ProductCarousel } from '@/components/ui/product-carousel';
@@ -20,7 +23,7 @@ export const Hero = () => (
           <FadeIn delay={0.1}>
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/10 bg-[#111111]/50 backdrop-blur-sm shadow-sm mb-6 sm:mb-8 hover:border-white/20 transition-colors cursor-default">
               <span className="flex h-2 w-2 rounded-full bg-[#FF3B3B] animate-pulse"></span>
-              <span className="text-[10px] sm:text-xs font-semibold text-[#CCCCCC]">TrainSmarter Early Beta</span>
+              <span className="text-[10px] sm:text-xs font-semibold text-[#CCCCCC]">Trainzy Early Beta</span>
               <span className="text-[10px] sm:text-xs text-[#888] ml-2 border-l border-white/20 pl-2">Join today</span>
               <ArrowRight className="w-3 h-3 ml-1 text-[#888]" />
             </div>
@@ -28,29 +31,45 @@ export const Hero = () => (
           
           <FadeIn delay={0.2}>
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tighter mb-6 sm:mb-8 leading-[1.1] text-white">
-              Your workouts should evolve.<br />
-              <span className="text-[#888888]">Most apps only log them.</span>
+              Stop Guessing Your<br />
+              <span className="text-[#888888]">Next Workout.</span>
             </h1>
           </FadeIn>
           
           <FadeIn delay={0.3}>
             <p className="text-base sm:text-lg md:text-xl text-[#888888] mb-8 sm:mb-10 max-w-2xl mx-auto leading-relaxed">
-              TrainSmarter automatically adjusts your sets, reps, and weights based on your real performance. Stop guessing and start progressing.
+              Trainzy analyzes your performance and automatically adjusts your next workout so you always know what to lift, when to increase weight, and when to recover.
             </p>
           </FadeIn>
           
           <FadeIn delay={0.4} className="w-full flex flex-col items-center">
-            <WaitlistForm source="hero_top" />
+            <div className="flex flex-col sm:flex-row gap-4 mb-8">
+              <Button 
+                onClick={() => document.getElementById('waitlist-form')?.scrollIntoView({ behavior: 'smooth' })}
+                variant="primary" 
+                className="rounded-full py-4 px-8 text-lg"
+              >
+                Join Early Access
+              </Button>
+              <Button 
+                onClick={() => document.getElementById('waitlist-form')?.scrollIntoView({ behavior: 'smooth' })}
+                variant="outline" 
+                className="rounded-full py-4 px-8 text-lg border-[#FF3B3B]/30 hover:bg-[#FF3B3B]/5 text-white"
+              >
+                Become Founding Member — $5 Lifetime
+              </Button>
+            </div>
+            
             <WaitlistCounter />
           </FadeIn>
         </div>
 
         {/* Product Carousel - Now centered below text */}
-        <div className="w-full max-w-5xl flex justify-center -mt-4 sm:-mt-8">
+        {/* <div className="w-full max-w-5xl flex justify-center -mt-4 sm:-mt-8">
           <FadeIn delay={0.6} className="w-full">
             <ProductCarousel />
           </FadeIn>
-        </div>
+        </div> */}
 
       </div>
     </div>

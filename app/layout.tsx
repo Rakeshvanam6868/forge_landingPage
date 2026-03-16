@@ -12,7 +12,7 @@ const inter = Inter({
 const schema = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
-  "name": "TrainSmarter",
+  "name": "Trainzy",
   "applicationCategory": "HealthAndFitnessApplication",
   "operatingSystem": "iOS, Android, Web",
   "offers": {
@@ -24,18 +24,18 @@ const schema = {
 };
 
 export const metadata: Metadata = {
-  title: 'TrainSmarter | Adaptive Strength Training App',
-  description: 'TrainSmarter automatically adapts your workouts based on performance. Stop guessing your workouts and turn every session into real progress.',
+  title: 'Trainzy | Adaptive Strength Training App',
+  description: 'Trainzy automatically adapts your workouts based on performance. Stop guessing your workouts and turn every session into real progress.',
   keywords: ['adaptive workout app', 'strength training app', 'progressive overload app', 'workout planning app', 'gym progression tracker'],
   openGraph: {
-    title: 'TrainSmarter | Adaptive Strength Training App',
-    description: 'Stop guessing your workouts. TrainSmarter tells you exactly what weight to lift and when to progress based on your performance.',
+    title: 'Trainzy | Adaptive Strength Training App',
+    description: 'Stop guessing your workouts. Trainzy tells you exactly what weight to lift and when to progress based on your performance.',
     type: 'website',
-    url: 'https://trainsmarter.app',
+    url: 'https://trainzy.app',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'TrainSmarter | Adaptive Workout App',
+    title: 'Trainzy | Adaptive Workout App',
     description: 'Stop guessing your workouts. Our AI tells you exactly what to lift.',
   },
   icons: {

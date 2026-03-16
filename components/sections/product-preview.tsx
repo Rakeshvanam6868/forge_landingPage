@@ -17,8 +17,8 @@ export const ProductPreviewSection = () => (
                <div className="absolute inset-0 bg-[#FF3B3B]/10 opacity-0 group-hover:opacity-100 transition-opacity" />
                <LayoutTemplate className="w-6 h-6 text-white/80" />
             </div>
-            <h3 className="text-xl font-bold mb-3 text-white/90">Live Workout Tracking</h3>
-            <p className="text-[#888888] text-sm leading-relaxed mb-6">Log sets and weights without leaving the workout screen. Designed for minimal taps.</p>
+            <h3 className="text-xl font-bold mb-3 text-white/90">Adaptive Workout Engine</h3>
+            <p className="text-[#888888] text-sm leading-relaxed mb-6">Your training plan automatically adjusts based on your performance and feedback.</p>
             
             {/* Inline UI Component */}
             <div className="mt-auto bg-[#1A1A1A] rounded-lg border border-white/5 p-4 flex gap-2">
@@ -40,8 +40,8 @@ export const ProductPreviewSection = () => (
                <div className="absolute inset-0 bg-[#FF3B3B]/10 opacity-0 group-hover:opacity-100 transition-opacity" />
                <TrendingUp className="w-6 h-6 text-[#22C55E]/80" />
             </div>
-            <h3 className="text-xl font-bold mb-3 text-white/90">Automatic Progression</h3>
-            <p className="text-[#888888] text-sm leading-relaxed mb-6">Your next workout adapts based on your performance. Never second guess a weight increase.</p>
+            <h3 className="text-xl font-bold mb-3 text-white/90">Equipment-Aware Training</h3>
+            <p className="text-[#888888] text-sm leading-relaxed mb-6">Workouts match your available equipment whether you train at home or in the gym.</p>
             
             {/* Inline UI Component */}
             <div className="mt-auto bg-[#1A1A1A] rounded-lg border border-[#22C55E]/20 p-4 border-l-2 border-l-[#22C55E]">
@@ -57,8 +57,8 @@ export const ProductPreviewSection = () => (
                <div className="absolute inset-0 bg-[#FF3B3B]/10 opacity-0 group-hover:opacity-100 transition-opacity" />
                <Calendar className="w-6 h-6 text-white/80" />
             </div>
-            <h3 className="text-xl font-bold mb-3 text-white/90">Smart Workout Planning</h3>
-            <p className="text-[#888888] text-sm leading-relaxed mb-6">The app decides what you should train next, completely optimizing volume drops and intensifications.</p>
+            <h3 className="text-xl font-bold mb-3 text-white/90">Structured Progression</h3>
+            <p className="text-[#888888] text-sm leading-relaxed mb-6">Every workout builds on the last so you continue improving week after week.</p>
             
             {/* Inline UI Component */}
             <div className="mt-auto bg-[#1A1A1A] rounded-lg border border-white/5 p-4">

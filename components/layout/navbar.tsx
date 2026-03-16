@@ -24,10 +24,10 @@ export const Navbar = () => {
           <div className="flex items-center gap-3">
             <img 
               src="/TrainSmarter.png" 
-              alt="TrainSmarter Logo" 
+              alt="Trainzy Logo" 
               className="w-10 h-10 object-contain"
             />
-            <span className="font-bold text-xl tracking-tight text-white/90">TrainSmarter</span>
+            <span className="font-bold text-xl tracking-tight text-white/90">Trainzy</span>
           </div>
           
           <div className="hidden md:flex items-center gap-8">
@@ -39,7 +39,13 @@ export const Navbar = () => {
 
           <div className="hidden md:flex items-center gap-4">
             {/* <a href="#" className="text-sm font-medium text-[#888888] hover:text-white transition-colors">Log In</a> */}
-            <Button variant="primary" className="px-5 py-2 text-sm">Join Waitlist</Button>
+            <Button 
+              onClick={() => document.getElementById('waitlist-form')?.scrollIntoView({ behavior: 'smooth' })}
+              variant="primary" 
+              className="px-5 py-2 text-sm"
+            >
+              Join Waitlist
+            </Button>
           </div>
 
           <div className="md:hidden">
@@ -57,7 +63,16 @@ export const Navbar = () => {
           <a href="#features" onClick={() => setIsOpen(false)} className="text-lg font-medium text-[#888888] hover:text-white p-2">Features</a>
           <Link href="/blog" onClick={() => setIsOpen(false)} className="text-lg font-medium text-[#888888] hover:text-white p-2">Blog</Link>
           <div className="pt-4 mt-auto">
-            <Button variant="primary" className="w-full">Join Waitlist</Button>
+            <Button 
+              onClick={() => {
+                setIsOpen(false);
+                document.getElementById('waitlist-form')?.scrollIntoView({ behavior: 'smooth' });
+              }}
+              variant="primary" 
+              className="w-full"
+            >
+              Join Waitlist
+            </Button>
           </div>
         </div>
       )}

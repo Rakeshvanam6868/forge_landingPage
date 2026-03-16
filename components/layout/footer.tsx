@@ -4,11 +4,11 @@ export const Footer = () => (
       <div className="font-bold text-white flex items-center gap-2">
         <img 
               src="/TrainSmarter.png" 
-              alt="TrainSmarter Logo" 
+              alt="Trainzy Logo" 
               className="w-10 h-10 object-contain"
-            /> TrainSmarter
+            /> Trainzy
       </div>
-      <div>© {new Date().getFullYear()} TrainSmarter.</div>
+      <div>© {new Date().getFullYear()} Trainzy.</div>
     </div>
   </footer>
 );

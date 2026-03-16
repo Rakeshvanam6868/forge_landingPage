@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: ['/api/'],
     },
-    sitemap: 'https://trainsmarter.app/sitemap.xml',
+    sitemap: 'https://trainzy.app/sitemap.xml',
   };
 }
