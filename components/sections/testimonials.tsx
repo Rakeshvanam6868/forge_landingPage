@@ -12,7 +12,7 @@ export const TestimonialsSection = () => (
         {[
           { quote: "Missed 4 days. Opened the app and it adjusted everything. Didn’t feel like quitting.", author: "Rahul", role: "Early Access" },
           { quote: "Usually I stop after missing a week. This time I just continued.", author: "Sarah K.", role: "Gym Member" },
-          { quote: "I don’t think about planning anymore. I just train.", author: "James M.", role: "Founder member" }
+          { quote: "I don’t think about planning anymore. I just train.", author: "James M.", role: "Founding Member" }
         ].map((item, i) => (
           <FadeIn key={i} delay={i * 0.1}>
             <div className="bg-[#111111] border border-white/5 rounded-2xl p-8 h-full flex flex-col justify-between shadow-xl">

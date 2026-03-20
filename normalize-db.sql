@@ -28,29 +28,29 @@ ORDER BY
     END,
     created_at ASC;
 
--- 3. Clear existing waitlist and re-insert normalized data
-DELETE FROM public.waitlist;
+-- 3. Perform a safe merge of the waitlist table
+-- This keeps the most 'premium' record and deletes duplicates
+WITH ranked_waitlist AS (
+    SELECT id, email,
+           ROW_NUMBER() OVER (
+               PARTITION BY LOWER(TRIM(email)) 
+               ORDER BY 
+                   CASE WHEN status = 'founder' OR is_paid = true THEN 0 ELSE 1 END,
+                   created_at ASC
+           ) as rn
+    FROM public.waitlist
+)
+DELETE FROM public.waitlist 
+WHERE id IN (SELECT id FROM ranked_waitlist WHERE rn > 1);
 
-INSERT INTO public.waitlist (id, name, email, source, status, is_paid, payment_date, payment_id, created_at)
-SELECT 
-    id, 
-    name, 
-    LOWER(TRIM(email)), 
-    source, 
-    status, 
-    is_paid, 
-    payment_date, 
-    payment_id, 
-    created_at
-FROM normalized_waitlist_temp;
-
--- 4. Normalize the email column in razorpay_orders so it matches the new waitlist
+-- 4. Normalize the email column in all tables
+UPDATE public.waitlist SET email = LOWER(TRIM(email));
 UPDATE public.razorpay_orders SET email = LOWER(TRIM(email));
 
 -- 5. Re-add the foreign key constraint (Safely)
 ALTER TABLE public.razorpay_orders 
 ADD CONSTRAINT razorpay_orders_email_fkey 
-FOREIGN KEY (email) REFERENCES public.waitlist(email) ON DELETE CASCADE;
+FOREIGN KEY (email) REFERENCES public.waitlist(email) ON UPDATE CASCADE ON DELETE CASCADE;
 
 COMMIT;
 

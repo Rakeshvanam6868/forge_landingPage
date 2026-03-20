@@ -22,8 +22,8 @@ export const TargetAudienceSection = () => (
           },
           {
             icon: <Smartphone className="w-6 h-6 text-[#FF3B3B]" />,
-            title: "Anyone tired of starting over again",
-            desc: "Join a community that values continuing over perfect attendance."
+            title: "Busy people who can't promise perfect attendance",
+            desc: "Stop worrying about 'missing a day' and just focus on the next session."
           }
         ].map((item, i) => (
           <FadeIn key={i} delay={i * 0.1} className="h-full">

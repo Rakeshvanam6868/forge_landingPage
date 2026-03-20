@@ -11,7 +11,7 @@ export const ProblemSection = () => (
       </FadeIn>
 
       <div className="max-w-4xl mx-auto mb-16">
-        <p className="text-xl text-[#888] mb-8 text-center">Most people don’t quit because they’re lazy. Then you stop.</p>
+        <p className="text-xl text-[#888] mb-8 text-center">Most people don’t quit because they’re lazy.</p>
         <div className="grid md:grid-cols-3 gap-8">
           {[
             {

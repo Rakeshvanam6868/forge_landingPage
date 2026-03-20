@@ -75,7 +75,7 @@ export const EarlyAccessSection = () => {
             <div className="relative z-10">
               {status === 'success' ? (
                 <div className="bg-[#22C55E]/10 border border-[#22C55E]/30 rounded-xl p-4 text-center">
-                  <div className="text-[#22C55E] font-bold text-lg mb-1">Welcome a Founding Member!</div>
+                  <div className="text-[#22C55E] font-bold text-lg mb-1">Welcome, Founding Member!</div>
                   <p className="text-[#888] text-sm">You now have premium access for 1 year.</p>
                 </div>
               ) : (

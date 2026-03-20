@@ -11,12 +11,13 @@ ALTER TABLE public.waitlist ADD CONSTRAINT waitlist_status_check CHECK (status I
 -- 2. CREATE THE DEDICATED ORDERS TABLE (CRITICAL FOR IDEMPOTENCY)
 CREATE TABLE IF NOT EXISTS public.razorpay_orders (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-  email TEXT NOT NULL REFERENCES public.waitlist(email),
+  email TEXT NOT NULL REFERENCES public.waitlist(email) ON UPDATE CASCADE ON DELETE CASCADE,
   razorpay_order_id TEXT UNIQUE NOT NULL,
   razorpay_payment_id TEXT UNIQUE,
-  status TEXT DEFAULT 'pending', -- 'pending', 'successful', 'failed'
+  status TEXT DEFAULT 'pending' NOT NULL,
   amount INTEGER NOT NULL,
-  created_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL,
+  CONSTRAINT razorpay_orders_status_check CHECK (status IN ('pending', 'successful', 'failed'))
 );
 
 -- 3. Indexes for lightning-fast webhook processing
@@ -26,11 +27,13 @@ CREATE INDEX IF NOT EXISTS idx_orders_email ON public.razorpay_orders(email);
 -- Enable RLS on the new table
 ALTER TABLE public.razorpay_orders ENABLE ROW LEVEL SECURITY;
 
--- Allow public to INSERT new payment intents (needed for the API route if not using Service Role entirely)
--- Actually, the backend create-order API route should use SUPABASE_SERVICE_ROLE_KEY to bypass RLS.
--- But we can add a basic insert policy just in case:
+-- Allow only service role to handle orders (API routes use service role)
 DROP POLICY IF EXISTS "Allow service role or public insert" ON public.razorpay_orders;
-CREATE POLICY "Allow service role or public insert" ON public.razorpay_orders FOR INSERT WITH CHECK (true);
+-- If the user wants public to be able to initiate orders, we can keep it but it's safer to use service role in backend.
+-- The current backend implementation uses Supabase Service Role Key, so we don't need public policies.
+-- I'll remove the public policy for security.
+CREATE POLICY "Service Role Only" ON public.razorpay_orders 
+FOR ALL USING (auth.role() = 'service_role');
 
 -- Refresh PostgREST cache
 NOTIFY pgrst, 'reload schema';

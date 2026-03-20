@@ -37,7 +37,9 @@ export const BeforeAfterSection = () => (
             <h3 className="text-xl font-bold mb-8 text-white">With Trainzy</h3>
             <ul className="space-y-6 w-full">
               <li className="flex items-center gap-4 text-left bg-[#FF3B3B]/5 p-4 rounded-xl border border-[#FF3B3B]/20">
-                <Check className="w-5 h-5 text-[#FF3B3B] shrink-0" />
+                <div className="w-5 h-5 flex items-center justify-center shrink-0">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#FF3B3B]" />
+                </div>
                 <span className="text-white font-medium">Miss workout</span>
               </li>
               <li className="flex items-center gap-4 text-left bg-[#FF3B3B]/5 p-4 rounded-xl border border-[#FF3B3B]/20">

@@ -61,7 +61,7 @@ export const Navbar = () => {
           <a href="#preview" onClick={() => setIsOpen(false)} className="text-lg font-medium text-[#888888] hover:text-white p-2">Product</a>
           <a href="#how-it-works" onClick={() => setIsOpen(false)} className="text-lg font-medium text-[#888888] hover:text-white p-2">Method</a>
           <a href="#features" onClick={() => setIsOpen(false)} className="text-lg font-medium text-[#888888] hover:text-white p-2">Features</a>
-          <Link href="/blog" onClick={() => setIsOpen(false)} className="text-lg font-medium text-[#888888] hover:text-white p-2">Blog</Link>
+          {/* <Link href="/blog" onClick={() => setIsOpen(false)} className="text-lg font-medium text-[#888888] hover:text-white p-2">Blog</Link> */}
           <div className="pt-4 mt-auto">
             <Button
               onClick={() => {

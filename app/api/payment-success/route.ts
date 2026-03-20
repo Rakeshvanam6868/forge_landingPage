@@ -34,22 +34,33 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: 'Invalid payment signature' }, { status: 400 });
     }
 
-    // Check if order already processed (Idempotency)
-    const { data: existingOrder } = await supabase
+    // Check if order already processed (Idempotency) - Atomic Update
+    const { data: existingOrder, error: fetchError } = await supabase
       .from('razorpay_orders')
       .select('status')
       .eq('razorpay_order_id', razorpay_order_id)
       .single();
 
+    if (fetchError) {
+      console.error('Error fetching order:', fetchError);
+      return NextResponse.json({ error: 'Order not found' }, { status: 404 });
+    }
+
     if (existingOrder?.status === 'successful') {
       return NextResponse.json({ success: true, message: 'Already processed' });
     }
 
-    // Update razorpay_orders status
-    await supabase
+    // Update razorpay_orders status - only if still pending
+    const { error: updateOrderError } = await supabase
       .from('razorpay_orders')
       .update({ status: 'successful', razorpay_payment_id: razorpay_payment_id })
-      .eq('razorpay_order_id', razorpay_order_id);
+      .eq('razorpay_order_id', razorpay_order_id)
+      .eq('status', 'pending'); // Ensure we only update if it was still pending
+
+    if (updateOrderError) {
+      console.error('razorpay_orders update failed:', updateOrderError);
+      return NextResponse.json({ error: 'Failed to update order status' }, { status: 500 });
+    }
 
     // Update Supabase
     const { error: updateError } = await supabase

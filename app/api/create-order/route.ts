@@ -6,6 +6,15 @@ import { normalizeEmail } from '@/lib/email';
 export async function POST(req: Request) {
   try {
     const { email: rawEmail, amount } = await req.json();
+    
+    if (!rawEmail || typeof rawEmail !== 'string') {
+      return NextResponse.json({ error: 'Valid email is required' }, { status: 400 });
+    }
+    
+    if (!amount || typeof amount !== 'number' || amount <= 0) {
+      return NextResponse.json({ error: 'Valid amount is required' }, { status: 400 });
+    }
+
     const email = normalizeEmail(rawEmail);
 
     if (!process.env.RAZORPAY_KEY_ID || !process.env.RAZORPAY_KEY_SECRET) {
