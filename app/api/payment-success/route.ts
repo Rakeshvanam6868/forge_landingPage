@@ -51,15 +51,21 @@ export async function POST(req: Request) {
     }
 
     // Update razorpay_orders status - only if still pending
-    const { error: updateOrderError } = await supabase
+    const { data: updatedOrder, error: updateOrderError } = await supabase
       .from('razorpay_orders')
       .update({ status: 'successful', razorpay_payment_id: razorpay_payment_id })
       .eq('razorpay_order_id', razorpay_order_id)
-      .eq('status', 'pending'); // Ensure we only update if it was still pending
+      .eq('status', 'pending') // Ensure we only update if it was still pending
+      .select();
 
     if (updateOrderError) {
       console.error('razorpay_orders update failed:', updateOrderError);
       return NextResponse.json({ error: 'Failed to update order status' }, { status: 500 });
+    }
+
+    // If no rows were updated, another request already processed this order
+    if (!updatedOrder || updatedOrder.length === 0) {
+      return NextResponse.json({ success: true, message: 'Already processed' });
     }
 
     // Update Supabase

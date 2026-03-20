@@ -50,7 +50,7 @@ UPDATE public.razorpay_orders SET email = LOWER(TRIM(email));
 -- 5. Re-add the foreign key constraint (Safely)
 ALTER TABLE public.razorpay_orders 
 ADD CONSTRAINT razorpay_orders_email_fkey 
-FOREIGN KEY (email) REFERENCES public.waitlist(email) ON UPDATE CASCADE ON DELETE CASCADE;
+FOREIGN KEY (email) REFERENCES public.waitlist(email) ON UPDATE CASCADE ON DELETE RESTRICT;
 
 COMMIT;
 
