@@ -14,8 +14,8 @@ export const FeaturesSection = () => (
         {[
           {
             icon: <Zap className="w-5 h-5 text-white" />,
-            title: "We fix your plan when you miss workouts",
-            description: "Skip a day or a week — your plan adjusts automatically."
+            title: "Adaptive Training Engine",
+            description: "Your plan adapts so you don't have to restart. Ensuring optimal progress every single day."
           },
           {
             icon: <Activity className="w-5 h-5 text-white" />,
