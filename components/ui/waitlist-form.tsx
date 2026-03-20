@@ -16,10 +16,10 @@ export const WaitlistForm = ({ source = 'hero' }: { source?: string }) => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email || !name) return;
-    
+
     setStatus('loading');
     setErrorMessage('');
-    
+
     try {
       const res = await fetch('/api/waitlist', {
         method: 'POST',
@@ -28,7 +28,7 @@ export const WaitlistForm = ({ source = 'hero' }: { source?: string }) => {
         },
         body: JSON.stringify({ name, email, source }),
       });
-      
+
       const data = await res.json();
 
       if (res.ok) {
@@ -71,7 +71,7 @@ export const WaitlistForm = ({ source = 'hero' }: { source?: string }) => {
       const orderRes = await fetch('/api/create-order', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ amount: 199, email, name }), 
+        body: JSON.stringify({ amount: 199, email, name }),
       });
       const { orderId, error } = await orderRes.json();
 
@@ -142,9 +142,9 @@ export const WaitlistForm = ({ source = 'hero' }: { source?: string }) => {
             <p className="text-[#888] mb-8 leading-relaxed">
               You have full premium access for 1 year. No monthly charges. We'll reach out soon with next steps.
             </p>
-            <Button 
+            <Button
               onClick={() => window.location.href = '/'}
-              variant="primary" 
+              variant="primary"
               className="w-full rounded-full py-6 font-bold text-base shadow-[0_4px_20px_rgba(255,59,59,0.3)]"
             >
               Continue
@@ -166,10 +166,10 @@ export const WaitlistForm = ({ source = 'hero' }: { source?: string }) => {
                 <span className="text-xl">✅</span>
               </div>
               <h3 className="text-xl font-bold text-white mb-2">
-                {isPaidUser 
-                  ? "You're already a Founding Member." 
-                  : isReturning 
-                    ? "You're already on the waitlist." 
+                {isPaidUser
+                  ? "You're already a Founding Member."
+                  : isReturning
+                    ? "You're already on the waitlist."
                     : "You're on the waitlist."}
               </h3>
               {!isPaidUser && <p className="text-sm font-medium text-white/90">Your position: #{position}</p>}
@@ -177,21 +177,21 @@ export const WaitlistForm = ({ source = 'hero' }: { source?: string }) => {
                 {isPaidUser ? "Welcome back! You have full premium access for 1 year." : "We'll notify you when access opens."}
               </p>
             </div>
-            
+
             {!isPaidUser && (
               <>
                 <div className="h-px bg-white/5 w-full mb-8" />
-                
+
                 {/* Upgrade Card Section */}
                 <p className="text-xs font-semibold text-[#FF3B3B] uppercase tracking-wider mb-2">LIMITED FOUNDING OFFER</p>
                 <h4 className="text-xl font-bold text-white mb-2">Become a Founding Member</h4>
                 <p className="text-sm text-[#888] leading-relaxed">
                   Unlock 1 year of premium access for a one-time payment of ₹199. No monthly subscription.
                 </p>
-                
-                <Button 
+
+                <Button
                   onClick={handleUpgrade}
-                  variant="primary" 
+                  variant="primary"
                   className="w-full rounded-full py-6 bg-[#FF3B3B] hover:bg-[#E63535] shadow-[0_0_20px_rgba(255,59,59,0.3)] font-bold text-base mt-6"
                 >
                   Get 1-Year Access — ₹199
@@ -216,16 +216,16 @@ export const WaitlistForm = ({ source = 'hero' }: { source?: string }) => {
         <ul className="space-y-4 text-left inline-block relative z-10">
           <li className="flex items-center gap-3">
             <span className="w-2 h-2 rounded-full bg-[#FF3B3B]" />
-            <span className="text-[#888] font-medium">Access when app launches</span>
+            <span className="text-[#888] font-medium">Get early access when Trainzy app launches</span>
           </li>
-          <li className="flex items-center gap-3">
+          {/* <li className="flex items-center gap-3">
             <span className="w-2 h-2 rounded-full bg-[#FF3B3B]" />
             <span className="text-[#888] font-medium">3-day free trial</span>
           </li>
           <li className="flex items-center gap-3">
             <span className="w-2 h-2 rounded-full bg-[#FF3B3B]" />
             <span className="text-[#888] font-medium">Then monthly subscription</span>
-          </li>
+          </li> */}
         </ul>
       </div>
 
@@ -236,32 +236,32 @@ export const WaitlistForm = ({ source = 'hero' }: { source?: string }) => {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
             </svg>
           </div>
-          <input 
-            type="text" 
-            placeholder="Full Name" 
+          <input
+            type="text"
+            placeholder="Full Name"
             required
             value={name}
             onChange={(e) => setName(e.target.value)}
             className="flex-1 bg-transparent border-none px-2 py-3 text-white placeholder-[#666] focus:outline-none focus:ring-0 text-sm sm:text-base w-full min-w-0"
           />
         </div>
-        
+
         <div className="flex items-center bg-[#111111] border border-white/10 rounded-full p-1.5 shadow-xl hover:border-white/20 transition-colors focus-within:border-[#FF3B3B]/50 focus-within:ring-1 focus-within:ring-[#FF3B3B]/50">
           <div className="pl-4 pr-2 flex items-center z-10">
             <svg className="w-5 h-5 text-[#666]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
             </svg>
           </div>
-          <input 
-            type="email" 
-            placeholder="Email Address" 
+          <input
+            type="email"
+            placeholder="Email Address"
             required
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             className="flex-1 bg-transparent border-none px-2 py-3 text-white placeholder-[#666] focus:outline-none focus:ring-0 text-sm sm:text-base w-full min-w-0"
           />
         </div>
-        
+
         <Button variant="primary" className="w-full rounded-full py-4 text-base shadow-[0_0_20px_rgba(255,59,59,0.3)]" disabled={status === 'loading'}>
           {status === 'loading' ? 'Joining...' : 'Join Waitlist'}
         </Button>

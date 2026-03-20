@@ -25,17 +25,17 @@ export default function LandingPage() {
   return (
     <div className="min-h-screen font-sans bg-[#000000] text-white selection:bg-[#FF3B3B]/30 overflow-x-hidden">
       {/* Plausible Analytics Integration */}
-      <Script 
-        defer 
-        data-domain="trainzy.app" 
-        src="https://plausible.io/js/script.js" 
+      <Script
+        defer
+        data-domain="trainzy.app"
+        src="https://plausible.io/js/script.js"
       />
-      
+
       <Navbar />
       <main>
         <FoundingMemberSuccess />
         <Hero />
-        
+
         {/* Single Waitlist Form Centerpiece */}
         <section className="bg-black py-12 flex justify-center">
           <WaitlistForm source="landing_page_center" />
@@ -51,7 +51,7 @@ export default function LandingPage() {
         <ProgressSection />
         <TargetAudienceSection />
         <FeaturesSection />
-        <TestimonialsSection />
+        {/* <TestimonialsSection /> */}
         <FounderSection />
         <EarlyAccessSection />
         <FinalCTA />

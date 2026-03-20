@@ -38,7 +38,8 @@ export const Hero = () => (
 
           <FadeIn delay={0.3}>
             <p className="text-base sm:text-lg md:text-xl text-[#888888] mb-8 sm:mb-10 max-w-2xl mx-auto leading-relaxed">
-              Trainzy adjusts your next workout based on what you actually did — so you don’t restart from day one.
+              Most people don&apos;t quit working out. They just miss a few days... and never come back. Trainzy makes
+              sure you never miss a workout again.
             </p>
           </FadeIn>
 
