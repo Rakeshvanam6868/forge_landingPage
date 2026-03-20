@@ -13,25 +13,30 @@ export const SolutionSection = () => (
             The Solution
           </div>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-8 tracking-tighter leading-[1.1]">
-            Your plan never breaks.<br />
-            <span className="text-[#888888]">It adjusts.</span>
+            Your plan doesn’t break.<br />
+            <span className="text-[#888888]">It adapts.</span>
           </h2>
-          <p className="text-lg md:text-xl text-[#888888] mb-12 max-w-2xl mx-auto leading-relaxed">
-            You don't restart. You continue.
-          </p>
-          
-          <div className="space-y-6 mb-10 text-xl font-bold">
-            <div className="flex items-center gap-4">
-              <span className="text-[#FF3B3B]">Missed workouts ❌</span>
-            </div>
-            <div className="flex items-center gap-4 pl-4">
-              <span className="text-[#888888] text-sm">↓ App detects gap</span>
-            </div>
-            <div className="flex items-center gap-4">
-              <span className="text-[#22C55E]">Plan rebuilt instantly ✅</span>
-            </div>
+          <div className="text-lg md:text-xl text-[#888888] mb-12 max-w-2xl mx-auto leading-relaxed space-y-4">
+            <p>Miss a few days?</p>
+            <p>Trainzy:</p>
+            <ul className="space-y-2 mt-4">
+              <li className="flex items-center gap-3">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#FF3B3B]" />
+                <span>adjusts your workout intensity</span>
+              </li>
+              <li className="flex items-center gap-3">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#FF3B3B]" />
+                <span>rebalances your weekly plan</span>
+              </li>
+              <li className="flex items-center gap-3">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#FF3B3B]" />
+                <span>tells you exactly what to do today</span>
+              </li>
+            </ul>
+            <p className="text-white font-bold pt-4 text-2xl tracking-tight">No restart. No confusion. Just continue.</p>
           </div>
-          <Button variant="primary">Start Your First Workout</Button>
+          
+
         </FadeIn>
 
         <FadeIn delay={0.2} className="relative z-10">

@@ -12,18 +12,18 @@ export const TargetAudienceSection = () => (
         {[
           {
             icon: <Dumbbell className="w-6 h-6 text-[#FF3B3B]" />,
-            title: "Beginner lifters",
-            desc: "Start with structured workouts that grow with your ability."
+            title: "Beginners who don’t know how to plan workouts",
+            desc: "Start with a plan that fixes itself when you're late."
           },
           {
             icon: <TrendingUp className="w-6 h-6 text-[#FF3B3B]" />,
-            title: "Intermediate lifters",
-            desc: "Break through plateaus with adaptive training adjustments."
+            title: "Intermediate lifters stuck restarting programs",
+            desc: "Break the cycle of day one and keep your momentum."
           },
           {
             icon: <Smartphone className="w-6 h-6 text-[#FF3B3B]" />,
-            title: "Home gym athletes",
-            desc: "Train effectively even with limited equipment."
+            title: "Anyone tired of starting over again",
+            desc: "Join a community that values continuing over perfect attendance."
           }
         ].map((item, i) => (
           <FadeIn key={i} delay={i * 0.1} className="h-full">

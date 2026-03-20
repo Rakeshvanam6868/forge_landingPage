@@ -11,11 +11,13 @@ import { TargetAudienceSection } from '@/components/sections/target-audience';
 import { FeaturesSection } from '@/components/sections/features';
 import { TestimonialsSection } from '@/components/sections/testimonials';
 import { FounderSection } from '@/components/sections/founder';
-import { EarlyAccessSection } from '@/components/sections/early-access';
 import { FinalCTA } from '@/components/sections/final-cta';
+import { RealExampleSection } from '@/components/sections/real-example';
+import { BeforeAfterSection } from '@/components/sections/before-after';
+import { EarlyAccessSection } from '@/components/sections/early-access';
 import { FoundingMemberSuccess } from '@/components/ui/founding-member-success';
 
-import { BlogPreviewSection } from '@/components/sections/blog-preview';
+
 import { DemoVideoSection } from '@/components/sections/demo-video';
 import { WaitlistForm } from '@/components/ui/waitlist-form';
 
@@ -43,13 +45,15 @@ export default function LandingPage() {
         <ProductPreviewSection />
         <ProblemSection />
         <SolutionSection />
+        <RealExampleSection />
         <HowItWorksSection />
+        <BeforeAfterSection />
         <ProgressSection />
         <TargetAudienceSection />
         <FeaturesSection />
-        <BlogPreviewSection />
         <TestimonialsSection />
         <FounderSection />
+        <EarlyAccessSection />
         <FinalCTA />
       </main>
       <Footer />

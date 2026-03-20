@@ -77,7 +77,7 @@ export async function POST(req: Request) {
           from: 'Trainzy <welcome@trainzy.app>',
           to: email,
           subject: "Welcome Founding Member",
-          html: `<p>Welcome Founding Member!</p><p>Thank you for supporting Trainzy. You now have lifetime premium access.</p><p>We'll notify you as soon as the platform is ready for you.</p>`
+          html: `<p>Welcome Founding Member!</p><p>Thank you for supporting Trainzy. You now have premium access for 1 year.</p><p>We'll notify you as soon as the platform is ready for you.</p>`
         });
       } catch (err) {
         console.error('Email sending failed:', err);

@@ -48,9 +48,9 @@ export const EarlyAccessSection = () => {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <FadeIn>
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-extrabold mb-6 tracking-tight">Get Early Access Today</h2>
+            <h2 className="text-4xl md:text-5xl font-extrabold mb-6 tracking-tight">Become a Founding Member</h2>
             <p className="text-[#888888] text-lg max-w-2xl mx-auto">
-              Pay once. Train forever. No monthly fees.
+              Pay once and unlock full premium access for 1 year. No monthly subscription.
             </p>
           </div>
         </FadeIn>
@@ -60,10 +60,10 @@ export const EarlyAccessSection = () => {
              <div className="absolute inset-0 bg-gradient-to-b from-[#FF3B3B]/5 to-transparent pointer-events-none" />
              <div className="relative z-10 grid sm:grid-cols-2 gap-6 text-left mb-12">
               {[
-                "₹199 lifetime",
-                "One-time payment",
-                "No subscription",
-                "Early access pricing"
+                "1 year full premium access",
+                "No monthly payments",
+                "Early supporter pricing",
+                "Limited founding spots"
               ].map((benefit, i) => (
                 <div key={i} className="flex items-center gap-3">
                   <Check className="w-5 h-5 text-[#FF3B3B] shrink-0" />
@@ -75,31 +75,23 @@ export const EarlyAccessSection = () => {
             <div className="relative z-10">
               {status === 'success' ? (
                 <div className="bg-[#22C55E]/10 border border-[#22C55E]/30 rounded-xl p-4 text-center">
-                  <div className="text-[#22C55E] font-bold text-lg mb-1">You're on the list!</div>
-                  <p className="text-[#888] text-sm">Keep an eye on your inbox for early access details.</p>
+                  <div className="text-[#22C55E] font-bold text-lg mb-1">Welcome a Founding Member!</div>
+                  <p className="text-[#888] text-sm">You now have premium access for 1 year.</p>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="flex flex-col gap-3">
-                  <div className="flex flex-col sm:flex-row gap-3">
-                    <input 
-                      type="email" 
-                      placeholder="Enter your email address" 
-                      required
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      className="flex-1 bg-[#050505] border border-white/10 rounded-xl px-4 py-4 text-white placeholder-[#888] focus:outline-none focus:border-[#FF3B3B]/50 focus:ring-1 focus:ring-[#FF3B3B]/50 transition-all"
-                    />
-                    <Button variant="primary" className="py-4 text-base sm:w-auto" disabled={status === 'loading'}>
-                      {status === 'loading' ? 'Joining...' : 'Start Your First Workout'}
-                    </Button>
-                  </div>
-                  {status === 'error' && (
-                    <p className="text-center text-xs text-[#FF3B3B] mt-2 font-medium bg-[#FF3B3B]/10 py-2 rounded-lg border border-[#FF3B3B]/20">
-                      {errorMessage}
-                    </p>
-                  )}
-                  <p className="text-center text-xs text-[#888] mt-2">No spam. Unsubscribe anytime.</p>
-                </form>
+                <div className="flex flex-col gap-3">
+                  <Button 
+                    onClick={() => document.getElementById('waitlist-form')?.scrollIntoView({ behavior: 'smooth' })}
+                    variant="primary" 
+                    className="w-full py-6 text-xl font-bold rounded-2xl bg-[#FF3B3B] hover:bg-[#E63535] shadow-[0_10px_30px_rgba(255,59,59,0.3)] transform transition-transform hover:scale-[1.02]"
+                  >
+                    Get 1-Year Access — ₹199
+                  </Button>
+                  <p className="text-center text-xs text-[#555] mt-4 uppercase tracking-widest font-bold items-center gap-2 flex justify-center">
+                    <span className="w-1 h-1 rounded-full bg-[#FF3B3B] animate-pulse" />
+                    Limited to first 100 users. Once filled, this offer closes.
+                  </p>
+                </div>
               )}
             </div>
           </div>

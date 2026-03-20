@@ -22,26 +22,26 @@ export const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <img 
-              src="/TrainSmarter.png" 
-              alt="Trainzy Logo" 
+            <img
+              src="/TrainSmarter.png"
+              alt="Trainzy Logo"
               className="w-10 h-10 object-contain"
             />
             <span className="font-bold text-xl tracking-tight text-white/90">Trainzy</span>
           </div>
-          
+
           <div className="hidden md:flex items-center gap-8">
             <a href="#preview" className="text-sm font-medium text-[#888888] hover:text-white transition-colors">Product</a>
             <a href="#how-it-works" className="text-sm font-medium text-[#888888] hover:text-white transition-colors">Method</a>
             <a href="#features" className="text-sm font-medium text-[#888888] hover:text-white transition-colors">Features</a>
-            <Link href="/blog" className="text-sm font-medium text-[#888888] hover:text-white transition-colors">Blog</Link>
+            {/* <Link href="/blog" className="text-sm font-medium text-[#888888] hover:text-white transition-colors">Blog</Link> */}
           </div>
 
           <div className="hidden md:flex items-center gap-4">
             {/* <a href="#" className="text-sm font-medium text-[#888888] hover:text-white transition-colors">Log In</a> */}
-            <Button 
+            <Button
               onClick={() => document.getElementById('waitlist-form')?.scrollIntoView({ behavior: 'smooth' })}
-              variant="primary" 
+              variant="primary"
               className="px-5 py-2 text-sm"
             >
               Join Waitlist (Free)
@@ -63,12 +63,12 @@ export const Navbar = () => {
           <a href="#features" onClick={() => setIsOpen(false)} className="text-lg font-medium text-[#888888] hover:text-white p-2">Features</a>
           <Link href="/blog" onClick={() => setIsOpen(false)} className="text-lg font-medium text-[#888888] hover:text-white p-2">Blog</Link>
           <div className="pt-4 mt-auto">
-            <Button 
+            <Button
               onClick={() => {
                 setIsOpen(false);
                 document.getElementById('waitlist-form')?.scrollIntoView({ behavior: 'smooth' });
               }}
-              variant="primary" 
+              variant="primary"
               className="w-full"
             >
               Join Waitlist (Free)

@@ -32,13 +32,13 @@ export const Hero = () => (
           <FadeIn delay={0.2}>
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tighter mb-6 sm:mb-8 leading-[1.1] text-white">
               Miss a few workouts?<br />
-              <span className="text-[#888888]">Your plan shouldn't break.</span>
+              <span className="text-[#888888]">Your plan is already fixed.</span>
             </h1>
           </FadeIn>
 
           <FadeIn delay={0.3}>
             <p className="text-base sm:text-lg md:text-xl text-[#888888] mb-8 sm:mb-10 max-w-2xl mx-auto leading-relaxed">
-              Trainzy adjusts your workouts automatically — so you always know what to do next.
+              Trainzy adjusts your next workout based on what you actually did — so you don’t restart from day one.
             </p>
           </FadeIn>
 
@@ -49,15 +49,19 @@ export const Hero = () => (
                 variant="primary"
                 className="rounded-full py-4 px-8 text-lg font-bold shadow-[0_0_30px_rgba(255,59,59,0.3)] hover:scale-105 transition-transform"
               >
-                Start Your First Workout
+                Join Waitlist (Free)
               </Button>
               <Button
                 onClick={() => document.getElementById('waitlist-form')?.scrollIntoView({ behavior: 'smooth' })}
                 variant="outline"
                 className="rounded-full py-4 px-8 text-lg border-white/10 hover:bg-white/5 font-semibold text-white"
               >
-                Early Access for ₹199 (first 100 users only)
+                Get 1-Year Access — ₹199
               </Button>
+            </div>
+
+            <div className="text-sm sm:text-base text-[#888] font-medium mb-12">
+              Pay once. No monthly subscription.
             </div>
 
             <WaitlistCounter />

@@ -9,24 +9,21 @@ export const HowItWorksSection = () => (
       </FadeIn>
 
       <div className="grid md:grid-cols-3 gap-8 relative mt-16">
-        {/* Subtle connecting line for desktop */}
-        {/* The connecting line div was removed as per the instruction's implied change in the surrounding div structure. */}
-
         {[
           {
             step: "01",
-            title: "Open app",
-            desc: "You see exactly what to do today."
+            title: "Open the app",
+            desc: "See exactly what to do today"
           },
           {
             step: "02",
-            title: "Do workout",
-            desc: "You lift the weights and log your sets."
+            title: "Do your workout",
+            desc: "Log sets, reps, and effort"
           },
           {
             step: "03",
             title: "App adjusts",
-            desc: "Missed a day? We fix the plan for tomorrow."
+            desc: "Miss a day? Your plan updates automatically"
           }
         ].map((item, i) => (
           <FadeIn key={i} delay={i * 0.15} className="relative z-10 flex flex-col text-left bg-[#111111] p-8 rounded-2xl border border-white/5 shadow-xl">

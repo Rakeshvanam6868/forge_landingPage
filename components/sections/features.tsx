@@ -10,26 +10,26 @@ export const FeaturesSection = () => (
         <SectionHeading title="Built to keep you going" />
       </FadeIn>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid md:grid-cols-3 gap-6">
         {[
           {
             icon: <Zap className="w-5 h-5 text-white" />,
             title: "We fix your plan when you miss workouts",
-            description: "Skip a day? No problem. We rebuild your schedule instantly."
+            description: "Skip a day or a week — your plan adjusts automatically."
           },
           {
             icon: <Activity className="w-5 h-5 text-white" />,
             title: "You always know what to do next",
-            description: "Open the app. See today's workout. Start lifting."
+            description: "Open the app. Your workout is ready."
           },
           {
             icon: <TrendingUp className="w-5 h-5 text-white" />,
             title: "Progress without overthinking",
-            description: "We handle the math. You just show up and train."
+            description: "No calculations. No guessing. Just train."
           }
         ].map((feature, index) => (
           <FadeIn key={index} delay={index * 0.1}>
-            <Card className="h-full bg-[#111] border-white/10">
+            <Card className="h-full bg-[#111] border-white/10 p-8 rounded-2xl">
               <div className="w-10 h-10 rounded-lg border border-white/10 bg-[#0A0A0A] flex items-center justify-center mb-6 text-white shadow-inner">
                 {feature.icon}
               </div>

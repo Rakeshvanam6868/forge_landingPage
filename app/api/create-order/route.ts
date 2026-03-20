@@ -29,7 +29,7 @@ export async function POST(req: Request) {
       .single();
 
     if (user?.is_paid) {
-      return NextResponse.json({ error: 'ALREADY_PAID', message: 'You already have lifetime access.' }, { status: 400 });
+      return NextResponse.json({ error: 'ALREADY_PAID', message: 'You already have 1-year premium access.' }, { status: 400 });
     }
 
     // 2. If user doesn't exist on waitlist at all, create them

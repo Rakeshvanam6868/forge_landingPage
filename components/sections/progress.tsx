@@ -8,8 +8,8 @@ export const ProgressSection = () => (
       <div className="grid lg:grid-cols-2 gap-16 items-center">
         <FadeIn>
           <SectionHeading 
-            title="Track Progress That Actually Matters" 
-            subtitle="See how your strength evolves over time instead of just logging workouts."
+            title="Track progress that reflects your training" 
+            subtitle="Your workouts evolve based on: performance, consistency, and recovery. Not just logs — real progression."
           />
         </FadeIn>
 

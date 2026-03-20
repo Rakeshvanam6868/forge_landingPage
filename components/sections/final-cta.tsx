@@ -8,7 +8,7 @@ export const FinalCTA = () => (
     <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
       <FadeIn>
         <h2 className="text-4xl md:text-6xl font-extrabold mb-10 tracking-tight leading-[1.05]">
-          Stop restarting.<br />
+          Stop restarting your workouts.<br />
           <span className="text-[#888888]">Start continuing.</span>
         </h2>
         <Button 

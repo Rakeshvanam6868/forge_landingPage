@@ -10,9 +10,9 @@ export const TestimonialsSection = () => (
 
       <div className="grid md:grid-cols-3 gap-6">
         {[
-          { quote: "I missed three days last week. The app just adjusted my plan. I didn't feel guilty.", author: "Rahul", role: "Early Access" },
-          { quote: "Usually when I skip a workout, I quit. Trainzy fixed my schedule so I just kept going.", author: "Sarah K.", role: "Gym Member" },
-          { quote: "I never restart my program anymore. I just open the app and it tells me what to do.", author: "James M.", role: "Beginner Lifter" }
+          { quote: "Missed 4 days. Opened the app and it adjusted everything. Didn’t feel like quitting.", author: "Rahul", role: "Early Access" },
+          { quote: "Usually I stop after missing a week. This time I just continued.", author: "Sarah K.", role: "Gym Member" },
+          { quote: "I don’t think about planning anymore. I just train.", author: "James M.", role: "Founder member" }
         ].map((item, i) => (
           <FadeIn key={i} delay={i * 0.1}>
             <div className="bg-[#111111] border border-white/5 rounded-2xl p-8 h-full flex flex-col justify-between shadow-xl">

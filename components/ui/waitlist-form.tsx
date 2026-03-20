@@ -82,7 +82,7 @@ export const WaitlistForm = ({ source = 'hero' }: { source?: string }) => {
         amount: 19900,
         currency: 'INR',
         name: 'Trainzy',
-        description: 'Founding Member Lifetime Access',
+        description: 'Founding Member 1-Year Access',
         order_id: orderId,
         handler: async function (response: any) {
           try {
@@ -140,7 +140,7 @@ export const WaitlistForm = ({ source = 'hero' }: { source?: string }) => {
             </div>
             <h3 className="text-2xl font-bold text-white mb-4">You're a Founding Member</h3>
             <p className="text-[#888] mb-8 leading-relaxed">
-              You now have lifetime Trainzy access and will skip the waitlist. We'll reach out soon with next steps.
+              You have full premium access for 1 year. No monthly charges. We'll reach out soon with next steps.
             </p>
             <Button 
               onClick={() => window.location.href = '/'}
@@ -174,7 +174,7 @@ export const WaitlistForm = ({ source = 'hero' }: { source?: string }) => {
               </h3>
               {!isPaidUser && <p className="text-sm font-medium text-white/90">Your position: #{position}</p>}
               <p className="text-xs text-[#666] mt-2">
-                {isPaidUser ? "Welcome back! You have full lifetime access." : "We'll notify you when the beta opens."}
+                {isPaidUser ? "Welcome back! You have full premium access for 1 year." : "We'll notify you when access opens."}
               </p>
             </div>
             
@@ -183,18 +183,23 @@ export const WaitlistForm = ({ source = 'hero' }: { source?: string }) => {
                 <div className="h-px bg-white/5 w-full mb-8" />
                 
                 {/* Upgrade Card Section */}
-                <p className="text-xs font-semibold text-[#FF3B3B] uppercase tracking-wider mb-2">Get Instant Access</p>
+                <p className="text-xs font-semibold text-[#FF3B3B] uppercase tracking-wider mb-2">LIMITED FOUNDING OFFER</p>
                 <h4 className="text-xl font-bold text-white mb-2">Become a Founding Member</h4>
-                Skip the waitlist and unlock lifetime premium access for a one-time payment of ₹199.
+                <p className="text-sm text-[#888] leading-relaxed">
+                  Unlock 1 year of premium access for a one-time payment of ₹199. No monthly subscription.
+                </p>
                 
                 <Button 
                   onClick={handleUpgrade}
                   variant="primary" 
                   className="w-full rounded-full py-6 bg-[#FF3B3B] hover:bg-[#E63535] shadow-[0_0_20px_rgba(255,59,59,0.3)] font-bold text-base mt-6"
                 >
-                  Become Founding Member — ₹199 Lifetime
+                  Get 1-Year Access — ₹199
                 </Button>
-                <p className="text-[10px] text-[#555] mt-4">Limited founding spots available.</p>
+                <p className="text-[10px] text-[#555] mt-4 uppercase tracking-widest font-bold items-center gap-2 flex justify-center">
+                  <span className="w-1 h-1 rounded-full bg-[#FF3B3B] animate-pulse" />
+                  Limited to first 100 users
+                </p>
               </>
             )}
           </div>
@@ -205,6 +210,25 @@ export const WaitlistForm = ({ source = 'hero' }: { source?: string }) => {
 
   return (
     <div id="waitlist-form" className="w-full max-w-md flex flex-col items-center scroll-mt-24">
+      <div className="text-center mb-10 w-full bg-[#111] border border-white/5 p-8 rounded-3xl shadow-xl relative overflow-hidden group">
+        <div className="absolute inset-0 bg-gradient-to-tr from-[#FF3B3B]/5 to-transparent pointer-events-none" />
+        <h3 className="text-2xl font-bold mb-6 text-white relative z-10">Join Waitlist (Free)</h3>
+        <ul className="space-y-4 text-left inline-block relative z-10">
+          <li className="flex items-center gap-3">
+            <span className="w-2 h-2 rounded-full bg-[#FF3B3B]" />
+            <span className="text-[#888] font-medium">Access when app launches</span>
+          </li>
+          <li className="flex items-center gap-3">
+            <span className="w-2 h-2 rounded-full bg-[#FF3B3B]" />
+            <span className="text-[#888] font-medium">3-day free trial</span>
+          </li>
+          <li className="flex items-center gap-3">
+            <span className="w-2 h-2 rounded-full bg-[#FF3B3B]" />
+            <span className="text-[#888] font-medium">Then monthly subscription</span>
+          </li>
+        </ul>
+      </div>
+
       <form onSubmit={handleSubmit} className="w-full space-y-3">
         <div className="flex items-center bg-[#111111] border border-white/10 rounded-full p-1.5 shadow-xl hover:border-white/20 transition-colors focus-within:border-[#FF3B3B]/50 focus-within:ring-1 focus-within:ring-[#FF3B3B]/50">
           <div className="pl-4 pr-2 flex items-center z-10">
