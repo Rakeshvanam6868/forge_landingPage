@@ -11,6 +11,7 @@ export const WaitlistForm = ({ source = 'hero' }: { source?: string }) => {
   const [position, setPosition] = useState<number | null>(null);
 
   const [isReturning, setIsReturning] = useState(false);
+  const [isPaidUser, setIsPaidUser] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -33,6 +34,7 @@ export const WaitlistForm = ({ source = 'hero' }: { source?: string }) => {
       if (res.ok) {
         setPosition(data.position);
         setIsReturning(!!data.isReturning);
+        setIsPaidUser(!!data.isPaid);
         setStatus('success');
       } else {
         setErrorMessage(data.error || 'Something went wrong. Please try again.');
@@ -119,7 +121,12 @@ export const WaitlistForm = ({ source = 'hero' }: { source?: string }) => {
       rzp.open();
     } catch (err: any) {
       console.error('Upgrade error:', err);
-      alert(err.message || 'Failed to initiate upgrade');
+      if (err.message === 'ALREADY_PAID') {
+        setIsPaidUser(true);
+        setStatus('success');
+      } else {
+        alert(err.message || 'Failed to initiate upgrade');
+      }
     }
   };
 
@@ -159,27 +166,37 @@ export const WaitlistForm = ({ source = 'hero' }: { source?: string }) => {
                 <span className="text-xl">✅</span>
               </div>
               <h3 className="text-xl font-bold text-white mb-2">
-                {isReturning ? "You're already on the waitlist." : "You're on the waitlist."}
+                {isPaidUser 
+                  ? "You're already a Founding Member." 
+                  : isReturning 
+                    ? "You're already on the waitlist." 
+                    : "You're on the waitlist."}
               </h3>
-              <p className="text-sm font-medium text-white/90">Your position: #{position}</p>
-              <p className="text-xs text-[#666] mt-2">We'll notify you when the beta opens.</p>
+              {!isPaidUser && <p className="text-sm font-medium text-white/90">Your position: #{position}</p>}
+              <p className="text-xs text-[#666] mt-2">
+                {isPaidUser ? "Welcome back! You have full lifetime access." : "We'll notify you when the beta opens."}
+              </p>
             </div>
             
-            <div className="h-px bg-white/5 w-full mb-8" />
-            
-            {/* Upgrade Card Section */}
-            <p className="text-xs font-semibold text-[#FF3B3B] uppercase tracking-wider mb-2">Get Instant Access</p>
-            <h4 className="text-xl font-bold text-white mb-2">Become a Founding Member</h4>
-              Skip the waitlist and unlock lifetime premium access for a one-time payment of ₹199.
-            
-            <Button 
-              onClick={handleUpgrade}
-              variant="primary" 
-              className="w-full rounded-full py-6 bg-[#FF3B3B] hover:bg-[#E63535] shadow-[0_0_20px_rgba(255,59,59,0.3)] font-bold text-base"
-            >
-              Become Founding Member — ₹199 Lifetime
-            </Button>
-            <p className="text-[10px] text-[#555] mt-4">Limited founding spots available.</p>
+            {!isPaidUser && (
+              <>
+                <div className="h-px bg-white/5 w-full mb-8" />
+                
+                {/* Upgrade Card Section */}
+                <p className="text-xs font-semibold text-[#FF3B3B] uppercase tracking-wider mb-2">Get Instant Access</p>
+                <h4 className="text-xl font-bold text-white mb-2">Become a Founding Member</h4>
+                Skip the waitlist and unlock lifetime premium access for a one-time payment of ₹199.
+                
+                <Button 
+                  onClick={handleUpgrade}
+                  variant="primary" 
+                  className="w-full rounded-full py-6 bg-[#FF3B3B] hover:bg-[#E63535] shadow-[0_0_20px_rgba(255,59,59,0.3)] font-bold text-base mt-6"
+                >
+                  Become Founding Member — ₹199 Lifetime
+                </Button>
+                <p className="text-[10px] text-[#555] mt-4">Limited founding spots available.</p>
+              </>
+            )}
           </div>
         </div>
       </div>

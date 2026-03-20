@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
 import { Resend } from 'resend';
+import { normalizeEmail } from '@/lib/email';
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -33,15 +34,7 @@ const BLOCKED_DOMAINS = [
   'guerrillamail.com', 'trashmail.com', 'yopmail.com'
 ];
 
-function normalizeEmail(email: string) {
-  let [user, domain] = email.toLowerCase().trim().split('@');
-  if (domain === 'gmail.com') {
-    user = user.replace(/\./g, '').split('+')[0];
-  } else {
-    user = user.split('+')[0];
-  }
-  return `${user}@${domain}`;
-}
+
 
 export async function POST(req: Request) {
   try {
@@ -66,7 +59,7 @@ export async function POST(req: Request) {
     // Check if user already exists
     const { data: existingUser } = await supabase
       .from('waitlist')
-      .select('id, created_at, status')
+      .select('id, created_at, status, is_paid')
       .eq('email', normalizedEmail)
       .single();
 
@@ -81,8 +74,11 @@ export async function POST(req: Request) {
         success: true, 
         position: count || 0,
         isReturning: true,
+        isPaid: !!existingUser.is_paid,
         status: existingUser.status,
-        message: "You're already on the waitlist."
+        message: existingUser.is_paid 
+          ? "You're already a Founding Member." 
+          : "You're already on the waitlist."
       });
     }
 

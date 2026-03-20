@@ -7,12 +7,12 @@ export const FounderSection = () => (
       <FadeIn>
         <div className="bg-[#111111] border border-white/5 rounded-3xl p-10 md:p-16 text-center shadow-[0_0_100px_rgba(255,59,59,0.03)] relative overflow-hidden">
           <div className="absolute top-0 right-1/2 translate-x-1/2 w-64 h-64 bg-white/5 blur-3xl rounded-full pointer-events-none" />
-          <h2 className="text-3xl font-bold mb-8 relative z-10">Built by a Solo Developer</h2>
+          <h2 className="text-3xl font-bold mb-8 relative z-10">Built from personal frustration</h2>
           <div className="space-y-6 text-[#888888] text-lg max-w-2xl mx-auto relative z-10 font-medium">
-            <p className="text-white/90">I built Trainzy because I was tired of guessing what to do in the gym.</p>
-            <p>Most apps just track workouts. They don't help you improve.</p>
-            <p>I wanted a system that actually guides your progress.</p>
-            <p className="text-white/90 italic pt-4">So I built one.</p>
+            <p className="text-white/90">I built Trainzy because I kept skipping workouts and quitting.</p>
+            <p>Every time I missed a week, my old program felt useless.</p>
+            <p>I was tired of constantly restarting from day one.</p>
+            <p className="text-white/90 italic pt-4">So I built an app that never makes you restart.</p>
           </div>
           <div className="mt-10 flex justify-center">
              <div className="w-14 h-14 rounded-full border border-white/20 bg-gradient-to-b from-[#333] to-[#111] flex items-center justify-center shadow-lg">

@@ -8,15 +8,15 @@ export const FinalCTA = () => (
     <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
       <FadeIn>
         <h2 className="text-4xl md:text-6xl font-extrabold mb-10 tracking-tight leading-[1.05]">
-          Start Training Smarter.<br />
-          <span className="text-[#888888]">Join the Early Access List.</span>
+          Stop restarting.<br />
+          <span className="text-[#888888]">Start continuing.</span>
         </h2>
         <Button 
           onClick={() => document.getElementById('waitlist-form')?.scrollIntoView({ behavior: 'smooth' })}
           variant="primary" 
           className="px-10 py-5 text-lg shadow-[0_0_30px_rgba(255,59,59,0.3)] font-bold rounded-full"
         >
-          Join the Waitlist (Free)
+          Start Your First Workout
         </Button>
       </FadeIn>
     </div>

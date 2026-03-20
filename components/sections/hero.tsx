@@ -13,11 +13,11 @@ export const Hero = () => (
     {/* Abstract Glow Effects */}
     <div className="absolute top-0 right-1/4 w-[300px] h-[300px] sm:w-[500px] sm:h-[500px] bg-[#FF3B3B]/10 rounded-full blur-[80px] sm:blur-[120px] pointer-events-none" />
     <div className="absolute top-1/4 left-1/4 w-[300px] h-[300px] sm:w-[500px] sm:h-[500px] bg-white/5 rounded-full blur-[70px] sm:blur-[100px] pointer-events-none" />
-    
+
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full flex flex-col items-center">
       {/* Centered Content Stack */}
       <div className="w-full flex flex-col items-center text-center">
-        
+
         {/* Hero Text Content */}
         <div className="max-w-4xl mx-auto flex flex-col items-center mb-12 sm:mb-16">
           <FadeIn delay={0.1}>
@@ -28,38 +28,38 @@ export const Hero = () => (
               <ArrowRight className="w-3 h-3 ml-1 text-[#888]" />
             </div>
           </FadeIn>
-          
+
           <FadeIn delay={0.2}>
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tighter mb-6 sm:mb-8 leading-[1.1] text-white">
-              Stop Guessing Your<br />
-              <span className="text-[#888888]">Next Workout.</span>
+              Miss a few workouts?<br />
+              <span className="text-[#888888]">Your plan shouldn't break.</span>
             </h1>
           </FadeIn>
-          
+
           <FadeIn delay={0.3}>
             <p className="text-base sm:text-lg md:text-xl text-[#888888] mb-8 sm:mb-10 max-w-2xl mx-auto leading-relaxed">
-              Trainzy analyzes your performance and automatically adjusts your next workout so you always know what to lift, when to increase weight, and when to recover.
+              Trainzy adjusts your workouts automatically — so you always know what to do next.
             </p>
           </FadeIn>
-          
+
           <FadeIn delay={0.4} className="w-full flex flex-col items-center">
             <div className="flex flex-col sm:flex-row gap-4 mb-8">
-              <Button 
+              <Button
                 onClick={() => document.getElementById('waitlist-form')?.scrollIntoView({ behavior: 'smooth' })}
-                variant="primary" 
+                variant="primary"
                 className="rounded-full py-4 px-8 text-lg font-bold shadow-[0_0_30px_rgba(255,59,59,0.3)] hover:scale-105 transition-transform"
               >
-                Join the Waitlist (Free)
+                Start Your First Workout
               </Button>
-              <Button 
+              <Button
                 onClick={() => document.getElementById('waitlist-form')?.scrollIntoView({ behavior: 'smooth' })}
-                variant="outline" 
+                variant="outline"
                 className="rounded-full py-4 px-8 text-lg border-white/10 hover:bg-white/5 font-semibold text-white"
               >
-                Become Founding Member — ₹199 Lifetime
+                Early Access for ₹199 (first 100 users only)
               </Button>
             </div>
-            
+
             <WaitlistCounter />
           </FadeIn>
         </div>

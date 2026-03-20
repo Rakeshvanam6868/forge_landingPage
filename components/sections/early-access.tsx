@@ -48,9 +48,9 @@ export const EarlyAccessSection = () => {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <FadeIn>
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-extrabold mb-6 tracking-tight">Join the Trainzy Beta</h2>
+            <h2 className="text-4xl md:text-5xl font-extrabold mb-6 tracking-tight">Get Early Access Today</h2>
             <p className="text-[#888888] text-lg max-w-2xl mx-auto">
-              Early testers get full access to premium features while the product is in beta.
+              Pay once. Train forever. No monthly fees.
             </p>
           </div>
         </FadeIn>
@@ -60,10 +60,10 @@ export const EarlyAccessSection = () => {
              <div className="absolute inset-0 bg-gradient-to-b from-[#FF3B3B]/5 to-transparent pointer-events-none" />
              <div className="relative z-10 grid sm:grid-cols-2 gap-6 text-left mb-12">
               {[
-                "Unlimited adaptive workouts",
-                "Advanced strength analytics",
-                "Priority support",
-                "Direct feedback to founder"
+                "₹199 lifetime",
+                "One-time payment",
+                "No subscription",
+                "Early access pricing"
               ].map((benefit, i) => (
                 <div key={i} className="flex items-center gap-3">
                   <Check className="w-5 h-5 text-[#FF3B3B] shrink-0" />
@@ -90,7 +90,7 @@ export const EarlyAccessSection = () => {
                       className="flex-1 bg-[#050505] border border-white/10 rounded-xl px-4 py-4 text-white placeholder-[#888] focus:outline-none focus:border-[#FF3B3B]/50 focus:ring-1 focus:ring-[#FF3B3B]/50 transition-all"
                     />
                     <Button variant="primary" className="py-4 text-base sm:w-auto" disabled={status === 'loading'}>
-                      {status === 'loading' ? 'Joining...' : 'Join Waitlist'}
+                      {status === 'loading' ? 'Joining...' : 'Start Your First Workout'}
                     </Button>
                   </div>
                   {status === 'error' && (

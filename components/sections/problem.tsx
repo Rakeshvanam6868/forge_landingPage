@@ -6,23 +6,23 @@ export const ProblemSection = () => (
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <FadeIn>
         <SectionHeading 
-          title="If Your Progress Has Stalled, There’s a Reason" 
+          title="You skip a day. Then another. Then you stop." 
         />
       </FadeIn>
 
       <div className="grid md:grid-cols-3 gap-8">
         {[
           {
-            title: "Most fitness apps only log workouts.",
-            desc: "They record what you did but never tell you what to do next."
+            title: "You miss workouts.",
+            desc: "Life gets busy. One missed day becomes a missed week."
           },
           {
-            title: "Programs stop adapting.",
-            desc: "Your body changes but your workout plan stays the same."
+            title: "You don't know what to do next.",
+            desc: "Your old plan feels broken. You lose track of where you left off."
           },
           {
-            title: "Progress becomes guesswork.",
-            desc: "Increase weight? Add reps? Deload? Most lifters end up guessing."
+            title: "You stop going.",
+            desc: "The guilt creeps in. Restarting feels too hard, so you quit."
           }
         ].map((item, i) => (
           <FadeIn key={i} delay={i * 0.1}>

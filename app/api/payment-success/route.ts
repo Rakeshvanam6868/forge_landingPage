@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import crypto from 'crypto';
 import { createClient } from '@supabase/supabase-js';
 import { Resend } from 'resend';
+import { normalizeEmail } from '@/lib/email';
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -20,6 +21,8 @@ export async function POST(req: Request) {
       name
     } = await req.json();
 
+    const normalizedEmail = normalizeEmail(email);
+
     // Verify signature
     const text = `${razorpay_order_id}|${razorpay_payment_id}`;
     const generated_signature = crypto
@@ -28,11 +31,25 @@ export async function POST(req: Request) {
       .digest('hex');
 
     if (generated_signature !== razorpay_signature) {
-      return NextResponse.json(
-        { error: 'Invalid payment signature' },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: 'Invalid payment signature' }, { status: 400 });
     }
+
+    // Check if order already processed (Idempotency)
+    const { data: existingOrder } = await supabase
+      .from('razorpay_orders')
+      .select('status')
+      .eq('razorpay_order_id', razorpay_order_id)
+      .single();
+
+    if (existingOrder?.status === 'successful') {
+      return NextResponse.json({ success: true, message: 'Already processed' });
+    }
+
+    // Update razorpay_orders status
+    await supabase
+      .from('razorpay_orders')
+      .update({ status: 'successful', razorpay_payment_id: razorpay_payment_id })
+      .eq('razorpay_order_id', razorpay_order_id);
 
     // Update Supabase
     const { error: updateError } = await supabase
@@ -43,7 +60,7 @@ export async function POST(req: Request) {
         payment_id: razorpay_payment_id,
         payment_date: new Date().toISOString()
       })
-      .eq('email', email.toLowerCase().trim());
+      .eq('email', normalizedEmail);
 
     if (updateError) {
       console.error('Supabase update failed:', updateError);

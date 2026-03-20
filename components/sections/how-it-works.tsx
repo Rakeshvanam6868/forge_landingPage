@@ -5,7 +5,7 @@ export const HowItWorksSection = () => (
   <section className="py-32 bg-[#000000] border-t border-white/5" id="how-it-works">
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <FadeIn>
-        <SectionHeading title="How Trainzy Works" />
+        <SectionHeading title="How it works" />
       </FadeIn>
 
       <div className="grid md:grid-cols-3 gap-8 relative mt-16">
@@ -15,18 +15,18 @@ export const HowItWorksSection = () => (
         {[
           {
             step: "01",
-            title: "Log your workout.",
-            desc: "Record your sets, reps, and weights as you train."
+            title: "Open app",
+            desc: "You see exactly what to do today."
           },
           {
             step: "02",
-            title: "Trainzy analyzes your performance.",
-            desc: "Our engine evaluates your volume, intensity, and feedback."
+            title: "Do workout",
+            desc: "You lift the weights and log your sets."
           },
           {
             step: "03",
-            title: "Your next workout adapts automatically.",
-            desc: "Wake up to a plan perfectly tailored to your current level."
+            title: "App adjusts",
+            desc: "Missed a day? We fix the plan for tomorrow."
           }
         ].map((item, i) => (
           <FadeIn key={i} delay={i * 0.15} className="relative z-10 flex flex-col text-left bg-[#111111] p-8 rounded-2xl border border-white/5 shadow-xl">
