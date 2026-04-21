@@ -9,16 +9,13 @@ import { HowItWorksSection } from '@/components/sections/how-it-works';
 import { ProgressSection } from '@/components/sections/progress';
 import { TargetAudienceSection } from '@/components/sections/target-audience';
 import { FeaturesSection } from '@/components/sections/features';
-import { TestimonialsSection } from '@/components/sections/testimonials';
 import { FounderSection } from '@/components/sections/founder';
 import { FinalCTA } from '@/components/sections/final-cta';
 import { RealExampleSection } from '@/components/sections/real-example';
 import { BeforeAfterSection } from '@/components/sections/before-after';
 import { EarlyAccessSection } from '@/components/sections/early-access';
 import { FoundingMemberSuccess } from '@/components/ui/founding-member-success';
-
-
-import { DemoVideoSection } from '@/components/sections/demo-video';
+import { SocialProofBubble } from '@/components/ui/social-proof-bubble';
 import { WaitlistForm } from '@/components/ui/waitlist-form';
 
 export default function LandingPage() {
@@ -34,6 +31,7 @@ export default function LandingPage() {
       <Navbar />
       <main>
         <FoundingMemberSuccess />
+        <SocialProofBubble />
         <Hero />
 
         {/* Single Waitlist Form Centerpiece */}
@@ -41,7 +39,6 @@ export default function LandingPage() {
           <WaitlistForm source="landing_page_center" />
         </section>
 
-        {/* <DemoVideoSection /> */}
         <ProductPreviewSection />
         <ProblemSection />
         <SolutionSection />
@@ -51,7 +48,6 @@ export default function LandingPage() {
         <ProgressSection />
         <TargetAudienceSection />
         <FeaturesSection />
-        {/* <TestimonialsSection /> */}
         <FounderSection />
         <EarlyAccessSection />
         <FinalCTA />

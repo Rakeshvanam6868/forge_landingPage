@@ -11,24 +11,25 @@ export const ProblemSection = () => (
       </FadeIn>
 
       <div className="max-w-4xl mx-auto mb-16">
-        <p className="text-xl text-[#888] mb-8 text-center">Most people don’t quit because they’re lazy.</p>
+        <p className="text-xl text-[#888] mb-8 text-center">Most people don&apos;t quit because they&apos;re lazy.</p>
         <div className="grid md:grid-cols-3 gap-8">
           {[
             {
-              title: "their plan stops making sense",
-              desc: "They quit because:"
+              title: "Their plan stops making sense",
+              icon: "📋"
             },
             {
-              title: "they don’t know what to do next",
-              desc: "their plan stops making sense"
+              title: "They don't know what to do next",
+              icon: "❓"
             },
             {
-              title: "restarting feels frustrating",
-              desc: "they don’t know what to do next"
+              title: "Restarting feels frustrating",
+              icon: "🔄"
             }
           ].map((item, i) => (
             <FadeIn key={i} delay={i * 0.1}>
               <div className="border border-white/5 rounded-2xl p-8 h-full bg-[#0A0A0A] flex flex-col items-center">
+                <span className="text-2xl mb-4">{item.icon}</span>
                 <div className="w-2 h-2 rounded-full bg-[#FF3B3B] mb-6 shadow-[0_0_10px_rgba(255,59,59,0.5)]" />
                 <h3 className="text-lg font-bold mb-4 text-white text-center leading-tight">{item.title}</h3>
               </div>
@@ -39,7 +40,7 @@ export const ProblemSection = () => (
 
       <FadeIn delay={0.4}>
         <div className="text-center text-[#888] text-lg font-medium">
-          Most apps don’t fix this. They just track it.
+          Most apps don&apos;t fix this. They just track it.
         </div>
       </FadeIn>
     </div>

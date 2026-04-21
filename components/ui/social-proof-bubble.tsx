@@ -1,7 +1,7 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
+import { useState, useEffect, useCallback } from 'react';
+import { AnimatePresence, motion } from 'motion/react';
 
 // Helper to format rough time ago without large libraries
 function timeAgoStr(dateStr: string) {
@@ -15,6 +15,14 @@ function timeAgoStr(dateStr: string) {
   return 'Recently';
 }
 
+// Only show for signups within last 48 hours
+function isRecent(dateStr: string) {
+  const diff = Date.now() - new Date(dateStr).getTime();
+  return diff < 48 * 60 * 60 * 1000;
+}
+
+const MIN_SIGNUPS_TO_SHOW = 5; // Don't show social proof if we have very few signups
+
 export const SocialProofBubble = () => {
   const [recentSignups, setRecentSignups] = useState<any[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -27,8 +35,12 @@ export const SocialProofBubble = () => {
       try {
         const res = await fetch('/api/waitlist/recent');
         const data = await res.json();
-        if (data.recent && data.recent.length > 0) {
-          setRecentSignups(data.recent);
+        // Only use real, recent signups — no fakes
+        if (Array.isArray(data) && data.length >= MIN_SIGNUPS_TO_SHOW) {
+          const recent = data.filter((s: any) => isRecent(s.created_at));
+          if (recent.length >= 3) {
+            setRecentSignups(recent);
+          }
         }
       } catch (err) {
         console.error('Failed to fetch recent signups', err);
@@ -37,27 +49,32 @@ export const SocialProofBubble = () => {
     fetchRecent();
   }, []);
 
+  const showBubble = useCallback(() => {
+    setCurrentIndex((prev) => (prev + 1) % recentSignups.length);
+    setIsVisible(true);
+  }, [recentSignups.length]);
+
   // Cycle through notifications
   useEffect(() => {
     if (recentSignups.length === 0) return;
 
-    // Start first bubble after 5 seconds to not overlap with initial page load
+    // Start first bubble after 8 seconds to not overlap with initial page load
     const initialDelay = setTimeout(() => {
       setHasStarted(true);
       showBubble();
-    }, 5000);
+    }, 8000);
 
     return () => clearTimeout(initialDelay);
-  }, [recentSignups]);
+  }, [recentSignups, showBubble]);
 
   useEffect(() => {
     if (!hasStarted || recentSignups.length === 0) return;
 
-    // The cycle logic: visible for 5s, hidden for 12s, then show next
+    // The cycle logic: visible for 5s, hidden for 15s, then show next
     if (!isVisible) {
       const showTimer = setTimeout(() => {
         showBubble();
-      }, 12000);
+      }, 15000);
       return () => clearTimeout(showTimer);
     } else {
       const hideTimer = setTimeout(() => {
@@ -65,14 +82,12 @@ export const SocialProofBubble = () => {
       }, 5000);
       return () => clearTimeout(hideTimer);
     }
-  }, [isVisible, hasStarted, recentSignups]);
-
-  const showBubble = () => {
-    setCurrentIndex((prev) => (prev + 1) % recentSignups.length);
-    setIsVisible(true);
-  };
+  }, [isVisible, hasStarted, recentSignups, showBubble]);
 
   const currentItem = recentSignups[currentIndex];
+
+  // Don't render anything if we don't have enough real signups
+  if (recentSignups.length < MIN_SIGNUPS_TO_SHOW) return null;
 
   return (
     <div className="fixed bottom-6 left-6 z-50 pointer-events-none">
@@ -91,7 +106,7 @@ export const SocialProofBubble = () => {
             </div>
             <div>
               <p className="text-sm font-medium text-white mb-1">
-                An athlete just joined the early access group
+                {currentItem.name ? `${currentItem.name.split(' ')[0]} joined the waitlist` : 'Someone just joined the waitlist'}
               </p>
               <p className="text-xs text-[#888]">
                 {timeAgoStr(currentItem.created_at)}

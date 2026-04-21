@@ -5,7 +5,7 @@ import { normalizeEmail } from '@/lib/email';
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+  process.env.SUPABASE_SERVICE_ROLE_KEY! // SECURITY: Use service role for backend operations
 );
 
 const resend = new Resend(process.env.RESEND_API_KEY);
@@ -116,6 +116,6 @@ export async function POST(req: Request) {
     });
   } catch (error: any) {
     console.error('Waitlist API Error:', error);
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    return NextResponse.json({ error: 'Something went wrong. Please try again.' }, { status: 500 });
   }
 }

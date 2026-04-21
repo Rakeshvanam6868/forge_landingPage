@@ -87,14 +87,29 @@ export async function POST(req: Request) {
       );
     }
 
-    // Send confirmation email
+    // Send confirmation email — use normalizedEmail for consistency
     if (process.env.RESEND_API_KEY) {
       try {
         await resend.emails.send({
           from: 'Trainzy <welcome@trainzy.app>',
-          to: email,
-          subject: "Welcome Founding Member",
-          html: `<p>Welcome Founding Member!</p><p>Thank you for supporting Trainzy. You now have premium access for 1 year.</p><p>We'll notify you as soon as the platform is ready for you.</p>`
+          to: normalizedEmail,
+          subject: "You're a Founding Member 🎉",
+          html: `
+            <div style="font-family: -apple-system, sans-serif; max-width: 480px; margin: 0 auto; color: #333;">
+              <h2 style="color: #000;">Welcome to Trainzy, ${name || 'Founding Member'}!</h2>
+              <p>Thank you for believing in Trainzy early. You've secured <strong>1 year of full premium access</strong>.</p>
+              <div style="background: #f9f9f9; border-left: 3px solid #FF3B3B; padding: 16px; margin: 24px 0; border-radius: 4px;">
+                <strong>What happens next:</strong>
+                <ul style="margin: 8px 0 0; padding-left: 20px;">
+                  <li>We're building the app right now</li>
+                  <li>You'll get exclusive early access before anyone else</li>
+                  <li>We'll email you with progress updates</li>
+                </ul>
+              </div>
+              <p style="color: #888; font-size: 14px;">If you have any questions, reply to this email directly.</p>
+              <p>— Rakesh, Founder of Trainzy</p>
+            </div>
+          `
         });
       } catch (err) {
         console.error('Email sending failed:', err);
@@ -105,7 +120,7 @@ export async function POST(req: Request) {
   } catch (error: any) {
     console.error('Payment verification failed:', error);
     return NextResponse.json(
-      { error: error.message || 'Verification failed' },
+      { error: 'Verification failed. If you were charged, please contact hello@trainzy.app' },
       { status: 500 }
     );
   }

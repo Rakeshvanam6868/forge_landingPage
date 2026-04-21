@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 
 export const FoundingMemberSuccess = () => {
@@ -25,13 +24,20 @@ export const FoundingMemberSuccess = () => {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
             </svg>
           </div>
-          <h2 className="text-3xl font-bold text-white mb-4">You're now a Founding Member.</h2>
-          <p className="text-lg text-[#888] mb-8">Welcome to the early group building Trainzy.</p>
-          <Link href="/" onClick={() => setShow(false)}>
-            <Button variant="primary" className="rounded-full px-8 py-3">
-              Continue to Dashboard
-            </Button>
-          </Link>
+          <h2 className="text-3xl font-bold text-white mb-4">You&apos;re a Founding Member.</h2>
+          <p className="text-lg text-[#888] mb-4">Welcome to the founding group building Trainzy.</p>
+          <p className="text-sm text-[#666] mb-8">We&apos;ll send you early access as soon as the app is ready. Check your email for confirmation.</p>
+          <Button 
+            onClick={() => {
+              setShow(false);
+              // Clean URL without reload
+              window.history.replaceState({}, '', '/');
+            }} 
+            variant="primary" 
+            className="rounded-full px-8 py-3"
+          >
+            Got it — I&apos;m in
+          </Button>
        </div>
     </div>
   );

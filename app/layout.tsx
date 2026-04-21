@@ -14,19 +14,21 @@ const schema = {
   "@type": "SoftwareApplication",
   "name": "Trainzy",
   "applicationCategory": "HealthAndFitnessApplication",
-  "operatingSystem": "iOS, Android, Web",
+  "operatingSystem": "Web",
+  "applicationSubCategory": "Workout Planning",
   "offers": {
     "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "USD"
+    "price": "199",
+    "priceCurrency": "INR",
+    "description": "Founding Member 1-Year Premium Access"
   },
-  "description": "An adaptive workout tracking app that automatically adjusts weights and reps based on live performance."
+  "description": "An adaptive workout planning app that adjusts your training plan when you miss workouts, so you never have to restart."
 };
 
 export const metadata: Metadata = {
   title: 'Trainzy | Adaptive Strength Training App',
-  description: 'Trainzy automatically adapts your workouts based on performance. Stop guessing your workouts and turn every session into real progress.',
-  keywords: ['adaptive workout app', 'strength training app', 'progressive overload app', 'workout planning app', 'gym progression tracker'],
+  description: 'Trainzy adapts your workout plan when you miss days — so you never have to restart. Join the waitlist for early access.',
+  keywords: ['adaptive workout app', 'workout plan that adjusts', 'strength training app', 'workout planning app', 'gym progression tracker'],
   openGraph: {
     title: 'Trainzy | Adaptive Strength Training App',
     description: 'Stop guessing your workouts. Trainzy tells you exactly what weight to lift and when to progress based on your performance.',

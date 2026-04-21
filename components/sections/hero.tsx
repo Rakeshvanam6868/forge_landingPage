@@ -23,8 +23,8 @@ export const Hero = () => (
           <FadeIn delay={0.1}>
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/10 bg-[#111111]/50 backdrop-blur-sm shadow-sm mb-6 sm:mb-8 hover:border-white/20 transition-colors cursor-default">
               <span className="flex h-2 w-2 rounded-full bg-[#FF3B3B] animate-pulse"></span>
-              <span className="text-[10px] sm:text-xs font-semibold text-[#CCCCCC]">Trainzy Early Beta</span>
-              <span className="text-[10px] sm:text-xs text-[#888] ml-2 border-l border-white/20 pl-2">Join today</span>
+              <span className="text-[10px] sm:text-xs font-semibold text-[#CCCCCC]">Trainzy Early Access</span>
+              <span className="text-[10px] sm:text-xs text-[#888] ml-2 border-l border-white/20 pl-2">Launching soon</span>
               <ArrowRight className="w-3 h-3 ml-1 text-[#888]" />
             </div>
           </FadeIn>
@@ -38,8 +38,8 @@ export const Hero = () => (
 
           <FadeIn delay={0.3}>
             <p className="text-base sm:text-lg md:text-xl text-[#888888] mb-8 sm:mb-10 max-w-2xl mx-auto leading-relaxed">
-              Most people don&apos;t quit working out. They just miss a few days... and never come back. Trainzy makes
-              sure you never miss a workout again.
+              Most people don&apos;t quit working out. They just miss a few days... and never come back. Trainzy adapts
+              so missing a day doesn&apos;t mean starting over.
             </p>
           </FadeIn>
 

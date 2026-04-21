@@ -1,41 +1,36 @@
 import { NextResponse } from 'next/server';
-import { supabase } from '@/lib/supabase';
+import { createClient } from '@supabase/supabase-js';
+
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.SUPABASE_SERVICE_ROLE_KEY! // SECURITY: Use service role for backend
+);
 
 export const dynamic = 'force-dynamic'; // Avoid caching for recent signups
-
-const generateMockSignups = () => {
-  const names = [
-    // 75% Indian
-    'Rahul S.', 'Priya M.', 'Aditya K.', 'Sneha R.', 'Vikram C.', 
-    'Ananya D.', 'Karan P.', 'Neha B.', 'Rohan J.', 'Pooja T.', 
-    'Amit S.', 'Divya K.',
-    // 25% Foreign
-    'Sarah L.', 'James W.', 'Maria G.', 'Chen W.'
-  ];
-  
-  // Shuffle so it's different in memory, but next.js might reuse the module so it's fine.
-  // Actually, we can just map and return them with random recent times.
-  return names.map((name, i) => {
-    // Generate times like 2 min, 12 min, 25 min, etc.
-    const minutesAgo = (i + 1) * Math.floor(Math.random() * 5 + 2);
-    const date = new Date(Date.now() - minutesAgo * 60000);
-    return { name, created_at: date.toISOString() };
-  });
-};
 
 export async function GET() {
   if (!supabase) return NextResponse.json([], { status: 500 });
   
   try {
+    // Only fetch real signups from the last 48 hours for social proof
+    const cutoff = new Date(Date.now() - 48 * 60 * 60 * 1000).toISOString();
+
     const { data, error } = await supabase
       .from('waitlist')
       .select('name, created_at')
+      .gte('created_at', cutoff)
       .order('created_at', { ascending: false })
-      .limit(5);
+      .limit(10);
 
     if (error) throw error;
 
-    return NextResponse.json(data || []);
+    // Privacy: Only return first name + last initial
+    const sanitized = (data || []).map(entry => ({
+      name: entry.name ? `${entry.name.split(' ')[0]} ${entry.name.split(' ').slice(1).map((n: string) => n[0] + '.').join(' ')}`.trim() : null,
+      created_at: entry.created_at
+    }));
+
+    return NextResponse.json(sanitized);
   } catch (error) {
     return NextResponse.json([], { status: 500 });
   }
