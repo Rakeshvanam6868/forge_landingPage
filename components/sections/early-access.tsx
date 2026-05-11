@@ -30,13 +30,13 @@ export const EarlyAccessSection = () => {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <FadeIn>
           <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#FF3B3B]/20 bg-[#FF3B3B]/5 mb-6">
-              <Sparkles className="w-3.5 h-3.5 text-[#FF3B3B]" />
-              <span className="text-xs font-bold text-[#FF3B3B] uppercase tracking-wider">Limited Founding Offer</span>
-            </div>
-            <h2 className="text-4xl md:text-5xl font-extrabold mb-6 tracking-tight">Become a Founding Member</h2>
-            <p className="text-[#888888] text-lg max-w-2xl mx-auto">
-              Pay once, get full premium access for 1 year. No monthly subscription. No recurring charges.
+            <h2 className="text-4xl md:text-5xl font-extrabold mb-6 tracking-tight">
+              You&apos;ve been guessing.<br />
+              <span className="text-[#888888]">This is what&apos;s next.</span>
+            </h2>
+            <p className="text-[#888888] text-lg max-w-2xl mx-auto leading-relaxed">
+              Trainzy is in beta. 100 people get founding access. 98 spots remaining.<br />
+              One payment. One year. No subscription. Ever.
             </p>
           </div>
         </FadeIn>
@@ -51,20 +51,15 @@ export const EarlyAccessSection = () => {
                  <span className="text-5xl md:text-6xl font-extrabold text-white">₹199</span>
                  <span className="text-xl text-[#555] line-through font-medium">₹999</span>
                </div>
-               <p className="text-sm text-[#888]">One-time payment · 1 year premium access</p>
-               <div className="inline-flex items-center gap-1.5 mt-3 px-3 py-1 rounded-full bg-[#22C55E]/10 border border-[#22C55E]/20">
-                 <span className="text-xs font-bold text-[#22C55E]">Save 80% as a founding member</span>
-               </div>
+               <p className="text-sm text-[#888]">One-time payment · 1 year full access</p>
              </div>
 
              <div className="relative z-10 grid sm:grid-cols-2 gap-4 text-left mb-10">
               {[
-                "1 year full premium access",
-                "No monthly payments ever",
-                "Priority early access to the app",
-                "Founding member badge",
-                "Direct line to the founder",
-                "Shape the product roadmap"
+                "Full access from the day we launch",
+                "Your feedback shapes what gets built",
+                "Founding member badge — permanent",
+                "Full refund if we don't ship"
               ].map((benefit, i) => (
                 <div key={i} className="flex items-center gap-3">
                   <Check className="w-4 h-4 text-[#FF3B3B] shrink-0" />
@@ -86,7 +81,7 @@ export const EarlyAccessSection = () => {
                     variant="primary" 
                     className="w-full py-6 text-xl font-bold rounded-2xl bg-[#FF3B3B] hover:bg-[#E63535] shadow-[0_10px_30px_rgba(255,59,59,0.3)] transform transition-transform hover:scale-[1.02]"
                   >
-                    Get 1-Year Access — ₹199
+                    Become a founding member — ₹199
                   </Button>
                   
                   {/* Trust signals */}
@@ -97,7 +92,7 @@ export const EarlyAccessSection = () => {
                     </span>
                     <span className="flex items-center gap-1.5">
                       <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                      Full refund if we don&apos;t launch
+                      Full refund if we don&apos;t ship
                     </span>
                   </div>
 

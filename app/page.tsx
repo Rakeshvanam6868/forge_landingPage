@@ -3,17 +3,11 @@ import { Navbar } from '@/components/layout/navbar';
 import { Footer } from '@/components/layout/footer';
 import { Hero } from '@/components/sections/hero';
 import { ProductPreviewSection } from '@/components/sections/product-preview';
-import { ProblemSection } from '@/components/sections/problem';
-import { SolutionSection } from '@/components/sections/solution';
-import { HowItWorksSection } from '@/components/sections/how-it-works';
+import { LiveWorkoutSection } from '@/components/sections/live-workout';
 import { ProgressSection } from '@/components/sections/progress';
-import { TargetAudienceSection } from '@/components/sections/target-audience';
-import { FeaturesSection } from '@/components/sections/features';
 import { FounderSection } from '@/components/sections/founder';
-import { FinalCTA } from '@/components/sections/final-cta';
-import { RealExampleSection } from '@/components/sections/real-example';
-import { BeforeAfterSection } from '@/components/sections/before-after';
 import { EarlyAccessSection } from '@/components/sections/early-access';
+import { FinalCTA } from '@/components/sections/final-cta';
 import { FoundingMemberSuccess } from '@/components/ui/founding-member-success';
 import { SocialProofBubble } from '@/components/ui/social-proof-bubble';
 import { WaitlistForm } from '@/components/ui/waitlist-form';
@@ -32,22 +26,21 @@ export default function LandingPage() {
       <main>
         <FoundingMemberSuccess />
         <SocialProofBubble />
+
+        {/* BEAT 1 — I KNOW YOU */}
         <Hero />
 
-        {/* Single Waitlist Form Centerpiece */}
-        <section className="bg-black py-12 flex justify-center">
-          <WaitlistForm source="landing_page_center" />
-        </section>
 
+        {/* BEAT 2 — HERE'S THE SHIFT */}
         <ProductPreviewSection />
-        <ProblemSection />
-        <SolutionSection />
-        <RealExampleSection />
-        <HowItWorksSection />
-        <BeforeAfterSection />
+
+        {/* BEAT 3 — IN THE GYM */}
+        <LiveWorkoutSection />
+
+        {/* BEAT 4 — THIS IS REAL */}
         <ProgressSection />
-        <TargetAudienceSection />
-        <FeaturesSection />
+
+        {/* BEAT 5 — GET IN */}
         <FounderSection />
         <EarlyAccessSection />
         <FinalCTA />

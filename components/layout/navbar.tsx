@@ -44,7 +44,7 @@ export const Navbar = () => {
               variant="primary"
               className="px-5 py-2 text-sm"
             >
-              Join Waitlist (Free)
+              Show me what's next?
             </Button>
           </div>
 

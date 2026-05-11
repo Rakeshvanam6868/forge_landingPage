@@ -275,20 +275,20 @@ export const WaitlistForm = ({ source = 'hero' }: { source?: string }) => {
     <div id="waitlist-form" className="w-full max-w-md flex flex-col items-center scroll-mt-24">
       <div className="text-center mb-8 w-full bg-[#111] border border-white/5 p-8 rounded-3xl shadow-xl relative overflow-hidden group">
         <div className="absolute inset-0 bg-gradient-to-tr from-[#FF3B3B]/5 to-transparent pointer-events-none" />
-        <h3 className="text-2xl font-bold mb-2 text-white relative z-10">Join the Waitlist</h3>
-        <p className="text-sm text-[#888] relative z-10">Free — be first to know when Trainzy launches</p>
+        <h3 className="text-2xl font-bold mb-2 text-white relative z-10">See your number.</h3>
+        <p className="text-sm text-[#888] relative z-10">Free — get access before public launch.</p>
         <ul className="space-y-3 text-left inline-block relative z-10 mt-6">
           <li className="flex items-center gap-3">
             <span className="w-2 h-2 rounded-full bg-[#FF3B3B]" />
-            <span className="text-[#888] font-medium text-sm">Get early access when the app launches</span>
+            <span className="text-[#888] font-medium text-sm">Your volume target is the first thing you see</span>
           </li>
           <li className="flex items-center gap-3">
             <span className="w-2 h-2 rounded-full bg-[#FF3B3B]" />
-            <span className="text-[#888] font-medium text-sm">Your plan adapts when you miss workouts</span>
+            <span className="text-[#888] font-medium text-sm">Three taps after each session sets the next one</span>
           </li>
           <li className="flex items-center gap-3">
             <span className="w-2 h-2 rounded-full bg-[#FF3B3B]" />
-            <span className="text-[#888] font-medium text-sm">No spam — only launch updates</span>
+            <span className="text-[#888] font-medium text-sm">No spam — launch updates only</span>
           </li>
         </ul>
       </div>
@@ -327,7 +327,7 @@ export const WaitlistForm = ({ source = 'hero' }: { source?: string }) => {
         </div>
 
         <Button variant="primary" className="w-full rounded-full py-4 text-base shadow-[0_0_20px_rgba(255,59,59,0.3)] font-bold" disabled={status === 'loading'}>
-          {status === 'loading' ? 'Joining...' : 'Join Waitlist — Free'}
+          {status === 'loading' ? 'Joining...' : 'Show me what\'s next →'}
         </Button>
       </form>
 

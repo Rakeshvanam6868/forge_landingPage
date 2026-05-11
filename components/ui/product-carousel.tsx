@@ -5,13 +5,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { MobileDeviceFrame } from './mobile-device-frame';
 
-const screens = [
-  { src: '/screens/today-screen.jpg', alt: 'Today Overview' },
-  { src: '/screens/1000175255.jpg', alt: 'Workout Session' },
-  { src: '/screens/1000175258.jpg', alt: 'Progress Dashboard' },
-  { src: '/screens/1000175260.jpg', alt: 'Exercise List' },
-  { src: '/screens/1000175261.jpg', alt: 'Workout Summary' },
-];
+const screens = Array.from({ length: 27 }, (_, i) => ({
+  src: `/screens/Trainzy${i + 1}.jpg`,
+  alt: `Trainzy App Screen ${i + 1}`
+}));
 
 export const ProductCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -99,7 +96,7 @@ export const ProductCarousel = () => {
       </button>
 
       {/* Progress Indicators */}
-      <div className="flex justify-center gap-3 mt-12 mb-4">
+      <div className="flex flex-wrap justify-center gap-2 mt-12 mb-4 max-w-3xl mx-auto px-4">
         {screens.map((_, index) => (
           <button
             key={index}

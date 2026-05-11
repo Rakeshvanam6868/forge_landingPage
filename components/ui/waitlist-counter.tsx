@@ -27,22 +27,10 @@ export const WaitlistCounter = () => {
 
   return (
     <div className="flex flex-col items-center gap-3 mt-4 animate-in fade-in duration-700">
-      {count > 0 && (
-        <p className="text-sm sm:text-base text-[#888] font-medium">
-          Join <span className="text-white font-bold">{count.toLocaleString()} {count === 1 ? 'person' : 'people'}</span> on the waitlist.
-        </p>
-      )}
-      {spotsLeft !== null && spotsLeft > 0 && spotsLeft <= 100 && (
-        <div className="flex items-center gap-2 text-xs text-[#FF3B3B] font-semibold">
-          <span className="w-1.5 h-1.5 rounded-full bg-[#FF3B3B] animate-pulse" />
-          {spotsLeft} founding {spotsLeft === 1 ? 'spot' : 'spots'} remaining
-        </div>
-      )}
-      {spotsLeft !== null && spotsLeft <= 0 && (
-        <div className="text-xs text-[#888] font-medium">
-          Founding member offer is closed.
-        </div>
-      )}
+      <div className="flex items-center gap-2 text-xs sm:text-sm text-[#FF3B3B] font-bold uppercase tracking-widest">
+        <span className="w-1.5 h-1.5 rounded-full bg-[#FF3B3B] animate-pulse" />
+        Beta is live · {spotsLeft !== null ? spotsLeft : 98} founding spots remaining
+      </div>
     </div>
   );
 };
