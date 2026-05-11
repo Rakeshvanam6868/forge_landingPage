@@ -10,7 +10,7 @@ import { EarlyAccessSection } from '@/components/sections/early-access';
 import { FinalCTA } from '@/components/sections/final-cta';
 import { FoundingMemberSuccess } from '@/components/ui/founding-member-success';
 import { SocialProofBubble } from '@/components/ui/social-proof-bubble';
-import { WaitlistForm } from '@/components/ui/waitlist-form';
+
 
 export default function LandingPage() {
   return (

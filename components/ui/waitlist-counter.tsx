@@ -29,7 +29,7 @@ export const WaitlistCounter = () => {
     <div className="flex flex-col items-center gap-3 mt-4 animate-in fade-in duration-700">
       <div className="flex items-center gap-2 text-xs sm:text-sm text-[#FF3B3B] font-bold uppercase tracking-widest">
         <span className="w-1.5 h-1.5 rounded-full bg-[#FF3B3B] animate-pulse" />
-        Beta is live · {spotsLeft !== null ? spotsLeft : 98} founding spots remaining
+        Beta is live{spotsLeft !== null ? ` · ${spotsLeft} founding spots remaining` : ''}
       </div>
     </div>
   );
